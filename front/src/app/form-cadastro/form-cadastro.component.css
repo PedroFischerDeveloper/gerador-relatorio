@@ -4,3 +4,9 @@
   height: 150px;
   border-radius: 50%;
 }
+.validation-error p {
+  color: #dc3545;
+  margin-top: 0.2em;
+  border-left: 2px solid #dc3545;
+  padding-left: 0.3em;
+}

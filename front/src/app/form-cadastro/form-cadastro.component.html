@@ -12,9 +12,9 @@
       <div class="mb-3">
         <label for="exampleInputEmail1" class="form-label">Nome</label>
         <input
-          type="cpf"
+          type="text"
           class="form-control border border-primary"
-          id="cpf"
+          id="nome"
           name="nome"
           formControlName="nome"
           aria-describedby="emailHelp"
@@ -29,6 +29,8 @@
           type="cpf"
           class="form-control border border-primary"
           id="cpf"
+          name="cpf"
+          formControlName="cpf"
           aria-describedby="emailHelp"
         />
         <div *ngIf="cpf.invalid && formDir.submitted" class="validation-error">
@@ -50,6 +52,24 @@
           class="validation-error"
         >
           <p *ngIf="email.errors?.['required']">Email é obrigatório</p>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Telefone</label>
+        <input
+          type="tel"
+          class="form-control border border-primary"
+          id="telefone"
+          name="telefone"
+          formControlName="telefone"
+          aria-describedby="emailHelp"
+        />
+        <div
+          *ngIf="telefone.invalid && formDir.submitted"
+          class="validation-error"
+        >
+          <p *ngIf="telefone.errors?.['required']">Telefone é obrigatório</p>
         </div>
       </div>
 

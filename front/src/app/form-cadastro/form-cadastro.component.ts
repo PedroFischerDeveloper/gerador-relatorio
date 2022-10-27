@@ -1,6 +1,6 @@
 import { ApiService } from './../services/api.service';
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-form-cadastro',
@@ -14,10 +14,12 @@ export class FormCadastroComponent implements OnInit {
 
   ngOnInit(): void {
     this.form = new FormGroup({
-      nome: new FormControl(''),
-      cpf: new FormControl(''),
-      email: new FormControl(''),
-      senha: new FormControl(''),
+      nome: new FormControl('', [Validators.required]),
+      cpf: new FormControl('', [Validators.required]),
+      email: new FormControl('', [Validators.required]),
+      telefone: new FormControl('', [Validators.required]),
+      senha: new FormControl('', [Validators.required]),
+      adm: new FormControl('', [Validators.required]),
     });
   }
 
@@ -33,8 +35,16 @@ export class FormCadastroComponent implements OnInit {
     return this.form.get('email')!;
   }
 
+  get telefone() {
+    return this.form.get('telefone')!;
+  }
+
   get senha() {
     return this.form.get('senha')!;
+  }
+
+  get adm() {
+    return this.form.get('adm')!;
   }
 
   onSubmit() {
