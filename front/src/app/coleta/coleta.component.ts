@@ -10,11 +10,11 @@ import { ToastrService } from 'ngx-toastr';
 import { Agente } from '../shared/models/Agente.model';
 
 @Component({
-  selector: 'app-cadastro-agente',
-  templateUrl: './cadastro-agente.component.html',
-  styleUrls: ['./cadastro-agente.component.css'],
+  selector: 'app-coleta',
+  templateUrl: './coleta.component.html',
+  styleUrls: ['./coleta.component.css'],
 })
-export class CadastroAgenteComponent implements OnInit {
+export class ColetaComponent implements OnInit {
   public form!: FormGroup;
   public URL = 'cadastrar/agente';
 

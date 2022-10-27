@@ -1,10 +1,10 @@
-<div class="vh-100 d-flex justify-content-center align-items-center mt-5 p-5">
-  <div class="col-md-8 p-5 shadow-sm border rounded-5 border-primary bg-white">
-    <h2 class="text-center mb-4 text-primary p-5 display-4 text-primary">
+<div class="vh-100 d-flex justify-content-center my-5">
+  <div class="col-md-8 col-sm-12 rounded-5 border-primary bg-white">
+    <h2 class="text-center mb-4 text-primary display-6 text-primary">
       Cadastro de coleta
     </h2>
     <form
-      class="form"
+      class="form p-5"
       [formGroup]="form"
       (ngSubmit)="onSubmit()"
       #formDir="ngForm"
@@ -99,50 +99,10 @@
               <p *ngIf="funcao.errors?.['required']">Função é obrigatório</p>
             </div>
           </div>
-          <div
-            class="col-md-12 d-flex justify-content-center align-content-center"
-          >
-            <div class="form-check form-check-inline">
-              <input
-                class="form-check-input"
-                type="checkbox"
-                id="larvas"
-                name="larvas"
-                formControlName="larvas"
-              />
-              <label class="form-label text-primary mt-2" for="inlineCheckbox2"
-                >Larvas</label
-              >
-            </div>
-            <div class="form-check form-check-inline">
-              <input
-                class="form-check-input"
-                type="checkbox"
-                id="aviso"
-                name="aviso"
-                formControlName="aviso"
-              />
-              <label class="form-label text-primary mt-2" for="inlineCheckbox3"
-                >Aviso</label
-              >
-            </div>
-            <div class="form-check form-check-inline">
-              <input
-                class="form-check-input"
-                type="checkbox"
-                id="ativo"
-                name="ativo"
-                formControlName="ativo"
-              />
-              <label class="form-label text-primary mt-2" for="inlineCheckbox1"
-                >Ativo</label
-              >
-            </div>
-          </div>
         </div>
       </div>
 
-      <div class="col-md-12">
+      <div class="col-md-12 mt-5">
         <div class="d-grid">
           <button class="btn btn-success btn-block" type="submit">
             Cadastrar

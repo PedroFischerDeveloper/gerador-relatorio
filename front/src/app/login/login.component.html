@@ -1,58 +1,55 @@
-<div class="vh-100 d-flex justify-content-center align-items-center">
-  <div
-    class="col-sm-10 col-md-6 col-lg-4 p-3 shadow-sm border rounded-5 border-primary bg-white"
-  >
-    <div class="text-center">
-      <img src="../../assets/img/login.jpg" class="rounded" alt="..." /><br />
-    </div>
-    <h2 class="text-center mb-4 text-primary mt-5">Login</h2>
-    <form [formGroup]="form" (ngSubmit)="onSubmit()" #formDir="ngForm">
-      <div class="mb-3">
-        <label for="exampleInputEmail1" class="form-label text-primary"
-          >CPF</label
-        >
-        <input
-          type="cpf"
-          class="form-control border border-primary"
-          id="cpf"
-          name="cpf"
-          formControlName="cpf"
-          aria-describedby="emailHelp"
-        />
-        <div *ngIf="cpf.invalid && formDir.submitted" class="validation-error">
-          <p *ngIf="cpf.errors?.['required']">CPF é obrigatório</p>
+<section class="container">
+  <div class="row justify-content-center">
+    <div class="col-lg-6 col-md-12 mt-5 text-center p-5">
+      <img src="../../assets/img/login.jpg" class="rounded" alt="Login" />
+      <h2 class="text-primary mt-3">Login</h2>
+      <form
+        [formGroup]="form"
+        (ngSubmit)="onSubmit()"
+        #formDir="ngForm"
+        class="border-primary mt-3"
+      >
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label text-primary"
+            >CPF</label
+          >
+          <input
+            type="cpf"
+            class="form-control border border-primary"
+            id="cpf"
+            name="cpf"
+            formControlName="cpf"
+            aria-describedby="emailHelp"
+          />
+          <div
+            *ngIf="cpf.invalid && formDir.submitted"
+            class="validation-error"
+          >
+            <p *ngIf="cpf.errors?.['required']">CPF é obrigatório</p>
+          </div>
         </div>
-      </div>
-      <div class="mb-3">
-        <label for="exampleInputPassword1" class="form-label text-primary"
-          >Senha</label
-        >
-        <input
-          type="password"
-          class="form-control border border-primary"
-          id="senha"
-          name="senha"
-          formControlName="senha"
-        />
-      </div>
-      <div *ngIf="senha.invalid && formDir.submitted" class="validation-error">
-        <p *ngIf="senha.errors?.['required']">Senha é obrigatório</p>
-        <p *ngIf="senha.errors?.['minLength']">Senha é obrigatório</p>
-      </div>
-      <p class="small">
-        <a class="text-primary" href="forget-password.html"
-          >Esqueceu a senha?</a
-        >
-      </p>
-      <div class="d-grid">
-        <button class="btn btn-success btn-block" type="submit">Logar</button>
-      </div>
-    </form>
-    <div class="mt-3">
-      <p class="mb-0 text-center">
-        Não tem conta?
-        <a href="signup.html" class="text-primary fw-bold">Registre-se!</a>
-      </p>
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label text-primary"
+            >Senha</label
+          >
+          <input
+            type="password"
+            class="form-control border border-primary"
+            id="senha"
+            name="senha"
+            formControlName="senha"
+          />
+          <div
+            *ngIf="senha.invalid && formDir.submitted"
+            class="validation-error"
+          >
+            <p *ngIf="senha.errors?.['required']">Senha é obrigatório</p>
+          </div>
+        </div>
+        <div class="d-grid">
+          <button class="btn btn-success btn-block" type="submit">Logar</button>
+        </div>
+      </form>
     </div>
   </div>
-</div>
+</section>
