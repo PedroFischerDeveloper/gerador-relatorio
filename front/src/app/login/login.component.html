@@ -4,7 +4,7 @@
       <img src="../../assets/img/login.jpg" class="rounded" alt="..." /><br />
     </div>
     <h2 class="text-center mb-4 text-primary mt-5">Login</h2>
-    <form>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" #formDir="ngForm">
       <div class="mb-3">
         <label for="exampleInputEmail1" class="form-label">CPF</label>
         <input
@@ -14,6 +14,9 @@
           formControlName="cpf"
           aria-describedby="emailHelp"
         />
+        <div *ngIf="cpf.invalid && formDir.submitted" class="validation-error">
+          <p *ngIf="cpf.errors?.['required']">CPF é obrigatório</p>
+        </div>
       </div>
       <div class="mb-3">
         <label for="exampleInputPassword1" class="form-label">Senha</label>
@@ -24,11 +27,10 @@
           formControlName="senha"
         />
       </div>
-      <p class="small">
-        <a class="text-primary" href="forget-password.html"
-          >Esqueceu a senha?</a
-        >
-      </p>
+      <div *ngIf="senha.invalid && formDir.submitted" class="validation-error">
+        <p *ngIf="senha.errors?.['required']">Senha é obrigatório</p>
+      </div>
+      <a class="text-primary" href="forget-password.html">Esqueceu a senha?</a>
       <div class="d-grid">
         <button class="btn btn-success btn-block" type="submit">Logar</button>
       </div>
