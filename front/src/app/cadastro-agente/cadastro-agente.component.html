@@ -1,63 +1,152 @@
 <div class="vh-100 d-flex justify-content-center align-items-center mt-5 p-5">
-  <div class="col-md-12 p-5 shadow-sm border rounded-5 border-primary bg-white">
-    <div class="text-center">
-      <img
-        src="../../assets/img/cadastro.jpg"
-        class="rounded"
-        alt="..."
-      /><br />
-    </div>
-    <h2 class="text-center mb-4 text-primary p-5">Cadastro de coleta</h2>
-    <form>
-      <div class="row">
-        <div class="col-md-6">
-          <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">Nome</label>
-            <input
-              type="cpf"
-              class="form-control border border-primary"
-              id="cpf"
-              formControlName="nome"
-              aria-describedby="emailHelp"
-            />
-          </div>
-          <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">Criadouro</label>
-            <input
-              type="cpf"
-              class="form-control border border-primary"
-              id="cpf"
-              formControlName="email"
-              aria-describedby="emailHelp"
-            />
+  <div class="col-md-8 p-5 shadow-sm border rounded-5 border-primary bg-white">
+    <h2 class="text-center mb-4 text-primary p-5 display-4 text-primary">
+      Cadastro de coleta
+    </h2>
+    <form
+      class="form"
+      [formGroup]="form"
+      (ngSubmit)="onSubmit()"
+      #formDir="ngForm"
+    >
+      <div class="col-md-6">
+        <div class="text-center">
+          <img
+            src="../../assets/img/cadastro.jpg"
+            class="rounded"
+            alt="..."
+          /><br />
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="mb-3">
+          <label
+            for="exampleInputEmail1"
+            class="form-label display-6 text-primary"
+            >Nome</label
+          >
+          <input
+            type="nome"
+            class="form-control border border-primary"
+            id="nome"
+            formControlName="nome"
+            aria-describedby="emailHelp"
+          />
+
+          <div
+            *ngIf="nome.invalid && formDir.submitted"
+            class="validation-error"
+          >
+            <p *ngIf="nome.errors?.['required']">Nome é obrigatório</p>
           </div>
         </div>
-        <div class="col-md-6">
+        <div class="mb-3">
+          <label
+            for="exampleInputEmail1"
+            class="form-label display-6 text-primary"
+            >Criadouro</label
+          >
+          <input
+            type="criadouro"
+            class="form-control border border-primary"
+            id="criadouro"
+            formControlName="criadouro"
+            aria-describedby="emailHelp"
+          />
+          <div
+            *ngIf="criadouro.invalid && formDir.submitted"
+            class="validation-error"
+          >
+            <p *ngIf="criadouro.errors?.['required']">
+              Criadouro é obrigatório
+            </p>
+          </div>
+        </div>
+        <div class="mb-3">
           <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label"
+            <label for="exampleInputPassword1" class="form-label text-primary"
               >Responsável</label
             >
             <input
-              type="senha"
+              type="responsavel"
               class="form-control border border-primary"
-              formControlName="senha"
-              id="senha"
+              formControlName="responsavel"
+              id="responsavel"
             />
+            <div
+              *ngIf="responsavel.invalid && formDir.submitted"
+              class="validation-error"
+            >
+              <p *ngIf="responsavel.errors?.['required']">
+                Responsável é obrigatório
+              </p>
+            </div>
           </div>
           <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label">Função</label>
+            <label for="exampleInputPassword1" class="form-label text-primary"
+              >Função</label
+            >
             <input
-              type="senha"
+              type="funcao"
               class="form-control border border-primary"
-              formControlName="senha"
-              id="senha"
+              formControlName="funcao"
+              id="funcao"
             />
+            <div
+              *ngIf="funcao.invalid && formDir.submitted"
+              class="validation-error"
+            >
+              <p *ngIf="funcao.errors?.['required']">Função é obrigatório</p>
+            </div>
+          </div>
+          <div
+            class="col-md-12 d-flex justify-content-center align-content-center"
+          >
+            <div class="form-check form-check-inline">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                id="larvas"
+                name="larvas"
+                formControlName="larvas"
+              />
+              <label class="form-label text-primary mt-2" for="inlineCheckbox2"
+                >Larvas</label
+              >
+            </div>
+            <div class="form-check form-check-inline">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                id="aviso"
+                name="aviso"
+                formControlName="aviso"
+              />
+              <label class="form-label text-primary mt-2" for="inlineCheckbox3"
+                >Aviso</label
+              >
+            </div>
+            <div class="form-check form-check-inline">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                id="ativo"
+                name="ativo"
+                formControlName="ativo"
+              />
+              <label class="form-label text-primary mt-2" for="inlineCheckbox1"
+                >Ativo</label
+              >
+            </div>
           </div>
         </div>
-        <div class="col-md-6">
-          <div class="d-grid">
-            <button class="btn btn-success" type="submit">Cadastrar</button>
-          </div>
+      </div>
+
+      <div class="col-md-12">
+        <div class="d-grid">
+          <button class="btn btn-success btn-block" type="submit">
+            Cadastrar
+          </button>
         </div>
       </div>
     </form>

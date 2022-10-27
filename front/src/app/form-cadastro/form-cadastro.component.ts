@@ -14,9 +14,27 @@ export class FormCadastroComponent implements OnInit {
 
   ngOnInit(): void {
     this.form = new FormGroup({
+      nome: new FormControl(''),
       cpf: new FormControl(''),
+      email: new FormControl(''),
       senha: new FormControl(''),
     });
+  }
+
+  get nome() {
+    return this.form.get('nome')!;
+  }
+
+  get cpf() {
+    return this.form.get('cpf')!;
+  }
+
+  get email() {
+    return this.form.get('email')!;
+  }
+
+  get senha() {
+    return this.form.get('senha')!;
   }
 
   onSubmit() {
