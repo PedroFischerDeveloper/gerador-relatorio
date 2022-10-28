@@ -1,7 +1,14 @@
 package com.gerador.relatorio.model.entities;
 
+import java.util.HashSet;
+import java.util.Set;
+import java.util.stream.Collectors;
+
+import javax.persistence.CollectionTable;
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -36,6 +43,19 @@ public class Usuario {
 	@Email
 	@Column(name="email",  unique = true)
 	private String email;
+	
+	@ElementCollection(fetch = FetchType.EAGER)
+	@CollectionTable(name="tb_perfil")
+	private Set<Integer> perfis = new HashSet<>();
+	
+	public Set<TipoPerfil> getPerfis(){
+		return perfis.stream()
+				.map(x -> TipoPerfil.toEnum(x)).collect(Collectors.toSet());
+	}
+	
+	public void addPerfil(TipoPerfil perfil) {
+		this.perfis.add(perfil.getCod());
+		}
 
 	public Long getId() {
 		return id;
