@@ -12,6 +12,9 @@ import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatCardModule } from '@angular/material/card';
 import { MatListModule } from '@angular/material/list';
+import { HeaderComponent } from './template/header/header.component';
+import { FooterComponent } from './template/footer/footer.component';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 @NgModule({
   declarations: [
@@ -19,6 +22,8 @@ import { MatListModule } from '@angular/material/list';
     ColetaComponent,
     LoginComponent,
     DashboardComponent,
+    HeaderComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
@@ -27,6 +32,7 @@ import { MatListModule } from '@angular/material/list';
     HttpClientModule,
     MatCardModule,
     MatListModule,
+    MatToolbarModule,
     ToastrModule.forRoot(),
     BrowserAnimationsModule,
   ],

@@ -1,0 +1,31 @@
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #007fff;
+}
+
+.header a{
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.header logo {
+  max-height: 32px;
+}
+
+.menu-nav ul {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.menu-nav ul a {
+  font-size: 1.25em;
+  display: inline-block;
+  margin: 0 10px;
+  color: #eee;
+}
+
+
