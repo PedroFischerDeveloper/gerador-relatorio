@@ -1,42 +1,18 @@
-<div class="container-fluid">
-  <nav class="navbar navbar-dark bg-dark">
-    <!-- Navbar content -->
-  </nav>
-</div>
+<div class="container p-3 my-5 py-5">
+  <mat-card>
+    <h2 class="text-primary text-center bg-white p-5 border border-primary">
+      RESULTADO DAS COLETAS
+    </h2>
 
-<div class="container p-3">
-  <div class="text-center my-5">
-    <h2 class="text-primary bg-white p-5">RESULTADO DAS COLETAS</h2>
-  </div>
-
-  <div class="table-responsive">
-    <table class="table table-hover">
-      <thead>
-        <tr>
-          <th scope="col" class="text-center">#</th>
-          <th scope="col" class="text-center">NOME</th>
-          <th scope="col" class="text-center">E-MAIL</th>
-          <th scope="col" class="text-center">CPF</th>
-          <th scope="col" class="text-center">Visualizar Relatório</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <th class="text-center" scope="row">1</th>
-          <td class="text-center">PEDRO R. FISCHER FILHO</td>
-          <td class="text-center">PEDRO.FISCHER22@GMAIL.COM</td>
-          <td class="text-center">444.222.666-55</td>
-          <td class="text-center">
-            <div class="row d-inline-flex">
-              <div class="form-inline">
-                <a href="#" class="btn btn-outline-secondary btn-sm"
-                  >Relatório
-                </a>
-              </div>
-            </div>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+    <mat-card-title-group
+      class="border border-primary my-3 p-3"
+      *ngFor="let user of users"
+    >
+      <mat-card-title>{{ user.nome }}</mat-card-title>
+      <mat-card-subtitle>{{ user.funcao }}</mat-card-subtitle>
+      <a href="#">
+        <img mat-card-sm-image src="../../assets/img/cadastro.jpg" />
+      </a>
+    </mat-card-title-group>
+  </mat-card>
 </div>
