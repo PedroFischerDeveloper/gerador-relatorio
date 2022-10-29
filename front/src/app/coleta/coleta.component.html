@@ -50,10 +50,11 @@
 
         <div class="mb-3">
           <mat-form-field class="full-width-field" appearance="fill">
-            <mat-label>Ativo</mat-label>
+            <mat-label>Atividade</mat-label>
             <select matNativeControl formControlName="ativo">
-              <option value="N" selected>Não</option>
-              <option value="S">Sim</option>
+              <option value="1" selected>Vistoria</option>
+              <option value="2">Retorno</option>
+              <option value="3">Recusa</option>
             </select>
           </mat-form-field>
         </div>
@@ -62,6 +63,16 @@
           <mat-form-field class="full-width-field" appearance="fill">
             <mat-label>Larvas</mat-label>
             <select matNativeControl formControlName="larvas">
+              <option value="N" selected>Não</option>
+              <option value="S">Sim</option>
+            </select>
+          </mat-form-field>
+        </div>
+
+        <div class="mb-3">
+          <mat-form-field class="full-width-field" appearance="fill">
+            <mat-label>Aviso</mat-label>
+            <select matNativeControl formControlName="aviso">
               <option value="N" selected>Não</option>
               <option value="S">Sim</option>
             </select>

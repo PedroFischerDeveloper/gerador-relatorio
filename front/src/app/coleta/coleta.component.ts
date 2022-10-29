@@ -29,10 +29,10 @@ export class ColetaComponent implements OnInit {
   ngOnInit(): void {
     this.form = new FormGroup({
       name: new FormControl('', [Validators.required]),
-      ativo: new FormControl(false),
+      ativo: new FormControl('', [Validators.required]),
       criadouro: new FormControl('', [Validators.required]),
-      larvas: new FormControl(false),
-      aviso: new FormControl(false),
+      larvas: new FormControl('', [Validators.required]),
+      aviso: new FormControl('', [Validators.required]),
       responsavel: new FormControl('', [Validators.required]),
       funcao: new FormControl('', [Validators.required]),
       observacao: new FormControl('', [Validators.required]),
