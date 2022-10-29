@@ -1,6 +1,7 @@
 import { ApiService } from './../services/api.service';
 import { Component, OnInit } from '@angular/core';
 import { ListUser } from '../shared/models/ListUser.model';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -15,9 +16,21 @@ export class DashboardComponent implements OnInit {
     { nome: 'João', funcao: 'agente' },
     { nome: 'Luiz', funcao: 'agente' },
     { nome: 'Marcos', funcao: 'agente' },
+    { nome: 'Pedro', funcao: 'agente' },
+    { nome: 'João', funcao: 'agente' },
+    { nome: 'Luiz', funcao: 'agente' },
+    { nome: 'Marcos', funcao: 'agente' },
+    { nome: 'Pedro', funcao: 'agente' },
+    { nome: 'João', funcao: 'agente' },
+    { nome: 'Luiz', funcao: 'agente' },
+    { nome: 'Marcos', funcao: 'agente' },
+    { nome: 'Pedro', funcao: 'agente' },
+    { nome: 'João', funcao: 'agente' },
+    { nome: 'Luiz', funcao: 'agente' },
+    { nome: 'Marcos', funcao: 'agente' },
   ];
 
-  constructor(private apiService: ApiService) {}
+  constructor(private apiService: ApiService, private isAuth: AuthService) {}
 
   ngOnInit(): void {}
 

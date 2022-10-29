@@ -2,8 +2,8 @@
 .header {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  background: #007fff;
+  justify-content: flex-end;
+  background: #3f51b5;
 }
 
 .header a{

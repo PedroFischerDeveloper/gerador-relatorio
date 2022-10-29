@@ -1,20 +1,18 @@
-<div class="container p-3 my-2">
-  <mat-card class="mb-5">
-    <h2
-      class="text-primary text-center bg-white p-5 border border-primary boder"
-    >
-      RESULTADO DAS COLETAS
-    </h2>
+<div class="container p-2">
+  <mat-card class="mat-elevation-z0">
+    <h6 class="text-muted text-center p-2 display-6">RESULTADO DAS COLETAS</h6>
 
     <mat-card-title-group
-      class="border border-primary my-3 p-3 boder"
+      class="my-3 p-3 background mat-elevation-z4"
       *ngFor="let user of users"
     >
-      <mat-card-title>{{ user.nome }}</mat-card-title>
-      <mat-card-subtitle>{{ user.funcao }}</mat-card-subtitle>
-      <a href="#">
-        <img mat-card-sm-image src="../../assets/img/cadastro.jpg" />
-      </a>
+      <mat-card-title class="color">{{ user.nome }}</mat-card-title>
+      <mat-card-subtitle class="text-muted">{{
+        user.funcao
+      }}</mat-card-subtitle>
+      <button mat-button color="primary" class="outline-none">
+        <mat-icon>cloud_download</mat-icon>
+      </button>
     </mat-card-title-group>
   </mat-card>
 </div>

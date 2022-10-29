@@ -8,6 +8,7 @@ import {
 import { ApiService } from '../services/api.service';
 import { ToastrService } from 'ngx-toastr';
 import { Agente } from '../shared/models/Agente.model';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-coleta',
@@ -21,12 +22,13 @@ export class ColetaComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private apiService: ApiService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private isAuth: AuthService
   ) {}
 
   ngOnInit(): void {
     this.form = new FormGroup({
-      nome: new FormControl('', [Validators.required]),
+      name: new FormControl('', [Validators.required]),
       ativo: new FormControl(false),
       criadouro: new FormControl('', [Validators.required]),
       larvas: new FormControl(false),
@@ -37,8 +39,8 @@ export class ColetaComponent implements OnInit {
     });
   }
 
-  get nome() {
-    return this.form.get('nome')!;
+  get name() {
+    return this.form.get('name')!;
   }
 
   get criadouro() {

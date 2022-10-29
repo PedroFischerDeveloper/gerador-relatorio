@@ -1,8 +1,7 @@
-import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
+import { AppRoutingModule } from './app-routing/app-routing.module';
 import { NgModule } from '@angular/core';
-
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppComponent } from './app.component';
 import { ColetaComponent } from './coleta/coleta.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -15,6 +14,10 @@ import { MatListModule } from '@angular/material/list';
 import { HeaderComponent } from './template/header/header.component';
 import { FooterComponent } from './template/footer/footer.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -35,6 +38,11 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     MatToolbarModule,
     ToastrModule.forRoot(),
     BrowserAnimationsModule,
+    MatIconModule,
+    MatButtonModule,
+    MatInputModule,
+    AppRoutingModule,
+    MatSelectModule,
   ],
   providers: [HttpClientModule],
   bootstrap: [AppComponent],

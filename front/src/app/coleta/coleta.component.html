@@ -4,111 +4,78 @@
       Cadastro de coleta
     </h2>
     <form
-      class="form p-5"
+      class="form"
       [formGroup]="form"
       (ngSubmit)="onSubmit()"
       #formDir="ngForm"
     >
-      <div class="col-md-6">
-        <div class="text-center">
-          <img
-            src="../../assets/img/cadastro.jpg"
-            class="rounded"
-            alt="..."
-          /><br />
-        </div>
-      </div>
-      <div class="col-md-6">
+      <mat-card class="mat-elevation-z0">
         <div class="mb-3">
-          <label
-            for="exampleInputEmail1"
-            class="form-label display-6 text-primary"
-            >Nome</label
-          >
-          <input
-            type="nome"
-            class="form-control border border-primary"
-            id="nome"
-            formControlName="nome"
-            aria-describedby="emailHelp"
-          />
-
-          <div
-            *ngIf="nome.invalid && formDir.submitted"
-            class="validation-error"
-          >
-            <p *ngIf="nome.errors?.['required']">Nome é obrigatório</p>
-          </div>
-        </div>
-        <div class="mb-3">
-          <label
-            for="exampleInputEmail1"
-            class="form-label display-6 text-primary"
-            >Criadouro</label
-          >
-          <input
-            type="criadouro"
-            class="form-control border border-primary"
-            id="criadouro"
-            formControlName="criadouro"
-            aria-describedby="emailHelp"
-          />
-          <div
-            *ngIf="criadouro.invalid && formDir.submitted"
-            class="validation-error"
-          >
-            <p *ngIf="criadouro.errors?.['required']">
-              Criadouro é obrigatório
-            </p>
-          </div>
-        </div>
-        <div class="mb-3">
-          <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label text-primary"
-              >Responsável</label
-            >
+          <mat-form-field class="full-width-field" appearance="fill">
+            <mat-label>Nome Entrevistado</mat-label>
             <input
-              type="responsavel"
-              class="form-control border border-primary"
+              matInput
+              placeholder="name"
+              formControlName="name"
+              formControlName="name"
+            />
+          </mat-form-field>
+        </div>
+        <div class="mb-3">
+          <mat-form-field class="full-width-field" appearance="fill">
+            <mat-label>Criadouro</mat-label>
+            <input
+              matInput
+              placeholder="criadouro"
+              formControlName="criadouro"
+            />
+          </mat-form-field>
+        </div>
+        <div class="mb-3">
+          <mat-form-field class="full-width-field" appearance="fill">
+            <mat-label>Nome responsável</mat-label>
+            <input
+              matInput
+              placeholder="responsavel"
               formControlName="responsavel"
-              id="responsavel"
             />
-            <div
-              *ngIf="responsavel.invalid && formDir.submitted"
-              class="validation-error"
-            >
-              <p *ngIf="responsavel.errors?.['required']">
-                Responsável é obrigatório
-              </p>
-            </div>
-          </div>
-          <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label text-primary"
-              >Função</label
-            >
-            <input
-              type="funcao"
-              class="form-control border border-primary"
-              formControlName="funcao"
-              id="funcao"
-            />
-            <div
-              *ngIf="funcao.invalid && formDir.submitted"
-              class="validation-error"
-            >
-              <p *ngIf="funcao.errors?.['required']">Função é obrigatório</p>
-            </div>
-          </div>
+          </mat-form-field>
         </div>
-      </div>
+        <div class="mb-3">
+          <mat-form-field class="full-width-field" appearance="fill">
+            <mat-label>Função</mat-label>
+            <input matInput placeholder="funcao" formControlName="funcao" />
+          </mat-form-field>
+        </div>
 
-      <div class="col-md-12 mt-5">
-        <div class="d-grid">
-          <button class="btn btn-success btn-block" type="submit">
-            Cadastrar
+        <div class="mb-3">
+          <mat-form-field class="full-width-field" appearance="fill">
+            <mat-label>Ativo</mat-label>
+            <select matNativeControl formControlName="ativo">
+              <option value="N" selected>Não</option>
+              <option value="S">Sim</option>
+            </select>
+          </mat-form-field>
+        </div>
+
+        <div class="mb-3">
+          <mat-form-field class="full-width-field" appearance="fill">
+            <mat-label>Larvas</mat-label>
+            <select matNativeControl formControlName="larvas">
+              <option value="N" selected>Não</option>
+              <option value="S">Sim</option>
+            </select>
+          </mat-form-field>
+        </div>
+        <div class="mb-3">
+          <button
+            mat-raised-button
+            class="full-btn outline-none bg-success text-white"
+          >
+            Cadastrar ocorrência
           </button>
         </div>
-      </div>
+      </mat-card>
     </form>
   </div>
 </div>

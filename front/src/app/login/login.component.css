@@ -1,18 +1,18 @@
 .rounded {
   max-width: 100%;
-  width: 400px;
-  height: 400px;
+  margin:  0 auto;
+  width: 150px;
+  height: 150px;
 }
-
-.border {
-  background: 2px solid  #007bff !important;
-  border-radius: 5px;
-  box-shadow: 2px 2px 2px #dedede;
+.outline-none {
+  outline: none;
 }
-
-.validation-error p {
-  color: #dc3545;
-  margin-top: 0.2em;
-  border-left: 2px solid #dc3545;
-  padding-left: 0.3em;
+.full-btn{
+  width: 100%!important;
+  min-width: unset!important;
+  padding: 0 5px;
+}
+.full-width-field {
+  width: 100%;
+  padding: 0 5px;
 }

@@ -1,3 +1,18 @@
-<mat-toolbar class="header footer">
-  <span> Todos os direitos reservados </span>
+<mat-toolbar class="footer">
+  <button
+    mat-raised-button
+    color="primary"
+    class="outline-none"
+    (click)="navTo('coleta')"
+  >
+    <mat-icon class="outline-none text-white">create</mat-icon>
+  </button>
+  <button
+    mat-raised-button
+    color="primary"
+    class="outline-none"
+    (click)="navTo('dashboard')"
+  >
+    <mat-icon fill="primary">list_alt</mat-icon>
+  </button>
 </mat-toolbar>

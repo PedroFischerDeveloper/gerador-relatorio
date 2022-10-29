@@ -1,14 +1,9 @@
-<mat-toolbar class="header mat-elevation-z1 p-5">
-  <div class="container d-flex justify-content-between">
+<mat-toolbar color="primary">
+  <mat-toolbar-row class="header">
     <span>
-      <img src="" alt="logo" />
+      <button mat-raised-button color="warn" (click)="logOff()">
+        <mat-icon>exit_to_app</mat-icon>
+      </button>
     </span>
-    <nav class="menu-nav">
-      <ul>
-        <li>
-          <a href="#sobre">Login</a>
-        </li>
-      </ul>
-    </nav>
-  </div>
+  </mat-toolbar-row>
 </mat-toolbar>
