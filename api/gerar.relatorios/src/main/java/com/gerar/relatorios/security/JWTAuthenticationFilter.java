@@ -1,6 +1,7 @@
-package com.gerador.relatorio.security;
+package com.gerar.relatorios.security;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -15,11 +16,11 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.gerador.relatorio.DTO.CredenciaisDTO;
-import com.gerador.relatorio.model.entities.Usuario;
-import com.gerador.relatorio.model.repository.UsuarioRepository;
+import com.gerar.relatorios.dto.CredenciaisDTO;
+import com.gerar.relatorios.model.entities.Usuario;
+import com.gerar.relatorios.model.repository.UsuarioRepository;
+import com.google.gson.Gson;
 
 
 
@@ -32,13 +33,11 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 	private UsuarioRepository _users;
 	
 	
-	
-	public JWTAuthenticationFilter(AuthenticationManager authenticationManager, JWTUtil jwtUtil, UsuarioRepository _users) {
- 
-        this.authenticationManager = authenticationManager;
-        this.jwtUtil = jwtUtil;
-        this._users = _users;
-    }
+	public JWTAuthenticationFilter(AuthenticationManager authenticationManager, JWTUtil jwtUtil , UsuarioRepository _users) {
+		this.authenticationManager = authenticationManager;
+		this.jwtUtil = jwtUtil;	
+		this._users = _users;
+	}
 	
 	
 	@Override
@@ -101,7 +100,7 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 	}
 	
 
-	
+
 	
 
 	
