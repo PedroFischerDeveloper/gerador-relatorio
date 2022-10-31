@@ -18,6 +18,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
+import { CadastroComponent } from './cadastro/cadastro.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { MatSelectModule } from '@angular/material/select';
     DashboardComponent,
     HeaderComponent,
     FooterComponent,
+    CadastroComponent,
   ],
   imports: [
     BrowserModule,

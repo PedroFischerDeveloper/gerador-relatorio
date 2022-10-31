@@ -1,0 +1,78 @@
+<section class="container h-50">
+  <div class="row h-100 justify-content-center align-items-center">
+    <div class="col-lg-6 col-md-6 text-center">
+      <div class="col-sm-12 mt-1">
+        <img
+          src="../../assets/img/login.jpg"
+          class="rounded text-center"
+          alt="Login"
+        />
+      </div>
+      <h2 class="text-primary mt-3 mb-5 display-6">Cadastro</h2>
+      <form
+        [formGroup]="form"
+        (ngSubmit)="onSubmit()"
+        #formDir="ngForm"
+        class="border-primary mt-3 mb-5"
+      >
+        <mat-form-field class="full-width-field" appearance="fill">
+          <mat-label>Nome</mat-label>
+          <input matInput placeholder="nome" formControlName="nome" />
+        </mat-form-field>
+
+        <mat-form-field class="full-width-field" appearance="fill">
+          <mat-label>CPF</mat-label>
+          <input matInput placeholder="CPF" formControlName="cpf" />
+        </mat-form-field>
+
+        <mat-form-field class="full-width-field" appearance="fill">
+          <mat-label>E-mail</mat-label>
+          <input matInput placeholder="email" formControlName="email" />
+        </mat-form-field>
+
+        <mat-form-field class="full-width-field" appearance="fill">
+          <mat-label>Telefone</mat-label>
+          <input
+            matInput
+            type="tel"
+            placeholder="telefone"
+            formControlName="telefone"
+          />
+        </mat-form-field>
+
+        <mat-form-field class="full-width-field" appearance="fill">
+          <mat-label>Senha</mat-label>
+          <input
+            matInput
+            type="password"
+            placeholder="senha"
+            formControlName="senha"
+          />
+        </mat-form-field>
+
+        <mat-form-field class="full-width-field" appearance="fill">
+          <mat-label>Confirmação de Senha</mat-label>
+          <input
+            matInput
+            type="password"
+            placeholder="Confirmação de senha"
+            formControlName="confsenha"
+          />
+        </mat-form-field>
+
+        <div class="example-button-row">
+          <button
+            mat-raised-button
+            class="full-btn outline-none bg-success text-white"
+            color="primary"
+          >
+            Cadastrar
+          </button>
+          <a class="mt-2" mat-button color="primary" [routerLink]="['']"
+            >Logar</a
+          >
+        </div>
+      </form>
+    </div>
+  </div>
+</section>

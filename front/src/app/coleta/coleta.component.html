@@ -1,8 +1,8 @@
 <div class="vh-100 d-flex justify-content-center my-5">
   <div class="col-md-8 col-sm-12 rounded-5 border-primary bg-white">
-    <h2 class="text-center mb-4 text-primary display-6 text-primary">
+    <h4 class="text-center mb-4 text-primary display-6 text-primary">
       Cadastro de coleta
-    </h2>
+    </h4>
     <form
       class="form"
       [formGroup]="form"
@@ -76,6 +76,61 @@
               <option value="N" selected>Não</option>
               <option value="S">Sim</option>
             </select>
+          </mat-form-field>
+        </div>
+
+        <h4 class="text-center mb-4 text-primary display-6 text-primary">
+          Endereço da coleta
+        </h4>
+
+        <div class="mb-3">
+          <mat-form-field class="full-width-field" appearance="fill">
+            <mat-label>CEP</mat-label>
+            <input
+              matInput
+              placeholder="cep"
+              formControlName="cep"
+              (blur)="buscaCep(this)"
+            />
+          </mat-form-field>
+        </div>
+
+        <div class="mb-3">
+          <mat-form-field class="full-width-field" appearance="fill">
+            <mat-label>Lougradouro/Rua</mat-label>
+            <input matInput placeholder="rua" formControlName="rua" />
+          </mat-form-field>
+        </div>
+
+        <div class="mb-3">
+          <mat-form-field class="full-width-field" appearance="fill">
+            <mat-label>Número</mat-label>
+            <input matInput placeholder="numero" formControlName="numero" />
+          </mat-form-field>
+        </div>
+
+        <div class="mb-3">
+          <mat-form-field class="full-width-field" appearance="fill">
+            <mat-label>Complemento</mat-label>
+            <input
+              matInput
+              placeholder="complemento"
+              formControlName="complemento"
+            />
+          </mat-form-field>
+        </div>
+
+        <div class="mb-3">
+          <mat-form-field class="full-width-field" appearance="fill">
+            <mat-label>Bairro</mat-label>
+            <input matInput placeholder="bairro" formControlName="bairro" />
+          </mat-form-field>
+        </div>
+
+        <div class="mb-3">
+          <mat-form-field class="full-width-field" appearance="fill">
+            <mat-label>Cidade</mat-label>
+            <input matInput placeholder="cidade" formControlName="cidade" />
           </mat-form-field>
         </div>
         <div class="mb-3">
