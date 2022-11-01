@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit } from '@angular/core';
 import {
   FormBuilder,
   FormControl,
@@ -10,6 +10,8 @@ import { ToastrService } from 'ngx-toastr';
 import { Agente } from '../shared/models/Agente.model';
 import { AuthService } from '../services/auth.service';
 import { ConsultaCepService } from '../services/consulta-cep.service';
+import { Router } from '@angular/router';
+import { CadastrarColetaService } from '../services/cadastrar-coleta.service';
 
 @Component({
   selector: 'app-coleta',
@@ -18,14 +20,16 @@ import { ConsultaCepService } from '../services/consulta-cep.service';
 })
 export class ColetaComponent implements OnInit {
   public form!: FormGroup;
-  public URL = 'cadastrar/agente';
+  public transData = new EventEmitter<any>();
 
   constructor(
     private fb: FormBuilder,
     private apiService: ApiService,
     private toastr: ToastrService,
     private isAuth: AuthService,
-    private consultaCepService: ConsultaCepService
+    private consultaCepService: ConsultaCepService,
+    private router: Router,
+    private cadastrarColetaService: CadastrarColetaService
   ) {}
 
   ngOnInit(): void {
@@ -38,12 +42,6 @@ export class ColetaComponent implements OnInit {
       responsavel: new FormControl('', [Validators.required]),
       funcao: new FormControl('', [Validators.required]),
       observacao: new FormControl('', [Validators.required]),
-      cep: new FormControl('', [Validators.required]),
-      rua: new FormControl('', [Validators.required]),
-      numero: new FormControl('', [Validators.required]),
-      complemento: new FormControl('', [Validators.required]),
-      bairro: new FormControl('', [Validators.required]),
-      cidade: new FormControl('', [Validators.required]),
     });
   }
 
@@ -99,12 +97,11 @@ export class ColetaComponent implements OnInit {
     return this.form.get('endereco')!;
   }
 
-  showToastSuccess() {
-    return this.toastr.success('This is the success toastr');
+  showToastSuccess(message: string) {
+    return this.toastr.success(message);
   }
 
   showToastError(error: any) {
-    console.log(error);
     return this.toastr.error(error);
   }
 
@@ -128,7 +125,9 @@ export class ColetaComponent implements OnInit {
 
   async onSubmit() {
     try {
-      await this.apiService.register(this.URL, this.form.value).subscribe();
+      this.router.navigate(['/coleta-endereco'], {
+        queryParams: { data: JSON.stringify(this.form.value) },
+      });
     } catch (error) {
       console.log(error);
       this.showToastError(error);

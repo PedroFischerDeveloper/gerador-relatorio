@@ -19,6 +19,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { CadastroComponent } from './cadastro/cadastro.component';
+import { MatTabsModule } from '@angular/material/tabs';
+import { ColetaEnderecoComponent } from './coleta-endereco/coleta-endereco.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +31,7 @@ import { CadastroComponent } from './cadastro/cadastro.component';
     HeaderComponent,
     FooterComponent,
     CadastroComponent,
+    ColetaEnderecoComponent,
   ],
   imports: [
     BrowserModule,
@@ -45,6 +48,7 @@ import { CadastroComponent } from './cadastro/cadastro.component';
     MatInputModule,
     AppRoutingModule,
     MatSelectModule,
+    MatTabsModule,
   ],
   providers: [HttpClientModule],
   bootstrap: [AppComponent],

@@ -3,16 +3,19 @@
     mat-raised-button
     color="primary"
     class="outline-none"
-    (click)="navTo('coleta')"
+    (click)="navTo('dashboard')"
   >
-    <mat-icon class="outline-none text-white">create</mat-icon>
+    <mat-icon fill="primary">dashboard</mat-icon>
+  </button>
+  <button mat-raised-button color="primary" class="outline-none">
+    <mat-icon class="outline-none text-center">cloud_download</mat-icon>
   </button>
   <button
     mat-raised-button
     color="primary"
     class="outline-none"
-    (click)="navTo('dashboard')"
+    (click)="navTo('coleta')"
   >
-    <mat-icon fill="primary">list_alt</mat-icon>
+    <mat-icon class="outline-none text-center">add</mat-icon>
   </button>
 </mat-toolbar>
