@@ -23,6 +23,7 @@ import { ConsultaCepService } from '../services/consulta-cep.service';
 export class ColetaEnderecoComponent implements OnInit {
   public form!: FormGroup;
   public coleta: any;
+  public fila = [{}];
 
   constructor(
     private fb: FormBuilder,
@@ -98,8 +99,12 @@ export class ColetaEnderecoComponent implements OnInit {
       cidade: this.form.value.cidade,
     };
 
-    console.log(data);
-    this.cadastrarColetaService.prepararUpload(data);
+    this.fila.push(data);
+  }
+
+  saveLocalStorage() {
+    this.cadastrarColetaService.prepararUpload(this.fila);
+    this.fila = [{}];
   }
 
   buscaCep(value: any) {

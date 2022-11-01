@@ -25,14 +25,27 @@
         <div class="mb-3">
           <mat-form-field class="full-width-field" appearance="fill">
             <mat-label>Lougradouro/Rua</mat-label>
-            <input matInput placeholder="rua" formControlName="rua" />
+            <input
+              matInput
+              placeholder="rua"
+              formControlName="rua"
+              maxlength="30"
+              minlength="3"
+            />
           </mat-form-field>
         </div>
 
         <div class="mb-3">
           <mat-form-field class="full-width-field" appearance="fill">
             <mat-label>Número</mat-label>
-            <input matInput placeholder="numero" formControlName="numero" />
+            <input
+              matInput
+              type="number"
+              placeholder="numero"
+              formControlName="numero"
+              maxlength="4"
+              minlength="1"
+            />
           </mat-form-field>
         </div>
 
@@ -43,6 +56,8 @@
               matInput
               placeholder="complemento"
               formControlName="complemento"
+              maxlength="50"
+              minlength="3"
             />
           </mat-form-field>
         </div>
@@ -64,8 +79,18 @@
           <button
             mat-raised-button
             class="full-btn outline-none bg-success text-white"
+            (click)="onSubmit()"
           >
-            Cadastrar
+            Registrar Coleta
+          </button>
+        </div>
+        <div class="mb-3">
+          <button
+            mat-raised-button
+            class="full-btn outline-none bg-primary text-white"
+            (click)="saveLocalStorage()"
+          >
+            <mat-icon>cloud_upload</mat-icon>
           </button>
         </div>
       </mat-card>

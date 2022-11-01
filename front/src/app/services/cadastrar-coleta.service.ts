@@ -5,12 +5,14 @@ import { LocalStorageServiceService } from './local-storage-service.service';
   providedIn: 'root',
 })
 export class CadastrarColetaService {
-  public fila = 0;
+  public contagem = 0;
+  public fila = [{}];
 
   constructor(private localStorage: LocalStorageServiceService) {}
 
   prepararUpload(data: any) {
-    this.fila++;
-    this.localStorage.set(`coleta${this.fila}`, data);
+    this.contagem++;
+    this.localStorage.set('coleta', data);
+    console.log(this.localStorage.get('coleta'));
   }
 }
