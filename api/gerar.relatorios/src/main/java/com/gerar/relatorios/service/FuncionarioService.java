@@ -43,7 +43,7 @@ public class FuncionarioService implements ServiceInterface<Funcionario>{
 
 	@Override
 	public boolean update(Funcionario obj) {
-		if(repository.existsById(obj.getCd_Funcionario())) {
+		if(repository.existsById(obj.getId())) {
 			repository.save(obj);
 			return true;
 		}

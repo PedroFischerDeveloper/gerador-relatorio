@@ -1,43 +1,72 @@
 package com.gerar.relatorios.model.entities;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.Email;
 
 @Entity
 public class Funcionario {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long cd_Funcionario;
-	private String nm_Funcionario;
-	private Long cd_cpf;
-	private String cd_tel;
+	private Long id;
 	
-	public Long getCd_Funcionario() {
-		return cd_Funcionario;
+	@Column(name="nome")
+	private String nome;
+	
+	@Column(name="cpf")
+	private Long cpf;
+	
+	@Column(name="telefone")
+	private String telefone;
+	
+	@Email
+	@Column(name="email",  unique = true)
+	private String email;
+	
+	@Column(name="senha")
+	private String senha;
+	
+
+	
+	public String getEmail() {
+		return email;
 	}
-	public void setCd_Funcionario(Long cd_Funcionario) {
-		this.cd_Funcionario = cd_Funcionario;
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public String getSenha() {
+		return senha;
+	}
+	public void setSenha(String senha) {
+		this.senha = senha;
+	}
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
 	}
 	public String getNm_Funcionario() {
-		return nm_Funcionario;
+		return nome;
 	}
-	public void setNm_Funcionario(String nm_Funcionario) {
-		this.nm_Funcionario = nm_Funcionario;
+	public void setNm_Funcionario(String nome) {
+		this.nome = nome;
 	}
-	public Long getCd_cpf() {
-		return cd_cpf;
+	public Long getCpf() {
+		return cpf;
 	}
-	public void setCd_cpf(Long cd_cpf) {
-		this.cd_cpf = cd_cpf;
+	public void setCpf(Long cpf) {
+		this.cpf = cpf;
 	}
-	public String getCd_tel() {
-		return cd_tel;
+	public String getTelefone() {
+		return telefone;
 	}
-	public void setCd_tel(String cd_tel) {
-		this.cd_tel = cd_tel;
+	public void setTelefone(String telefone) {
+		this.telefone = telefone;
 	}
 	
 	

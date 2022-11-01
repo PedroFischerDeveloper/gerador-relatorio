@@ -4,7 +4,7 @@ package com.gerar.relatorios.model.entities;
 
 public enum TipoPerfil {
 	ADMIN(1, "ROLE_ADMIN"),
-	CLIENTE(2, "ROLE_CLIENTE");
+	CLIENTE(2, "ROLE_FUNCIONARIO");
 	
 	private Integer cod;
 	private String descricao;

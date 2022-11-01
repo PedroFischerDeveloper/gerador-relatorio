@@ -1,6 +1,6 @@
 package com.gerar.relatorios.model.entities;
 
-import java.util.List;
+
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,8 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -20,13 +19,11 @@ public class Coleta {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="id_coleta")
-	private Long id_coleta;
+	@Column(name="id")
+	private Long id;
 	
-	
-
-	@Column(name="nm_entrevistado")
-	private String entrevistado;
+	@Column(name="nome")
+	private String nome;
 	
 	@Column(name="ativo")
 	private boolean ativo;
@@ -40,29 +37,31 @@ public class Coleta {
 	@Column(name="aviso")
 	private boolean aviso;
 	
-	@Column(name="nm_coletador")
-	private String coletador;
+	@Column(name="responsavel")
+	private String responsavel;
 	
 	@Column(name="funcao")
 	private String funcao;
 	
+	
 	@Column(name="observacao")
 	private String observacao;
+	
 
 	public Long getId() {
-		return id_coleta;
+		return id;
 	}
 
 	public void setId(Long id) {
-		this.id_coleta = id;
+		this.id = id;
 	}
 
-	public String getEntrevistado() {
-		return entrevistado;
+	public String getNome() {
+		return nome;
 	}
 
-	public void setEntrevistado(String entrevistado) {
-		this.entrevistado = entrevistado;
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 
 	public boolean isAtivo() {
@@ -97,12 +96,12 @@ public class Coleta {
 		this.aviso = aviso;
 	}
 
-	public String getColetador() {
-		return coletador;
+	public String getResponsavel() {
+		return responsavel;
 	}
 
-	public void setColetador(String coletador) {
-		this.coletador = coletador;
+	public void setResponsavel(String responsavel) {
+		this.responsavel = responsavel;
 	}
 
 	public String getFuncao() {

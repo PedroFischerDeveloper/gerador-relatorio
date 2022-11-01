@@ -6,6 +6,6 @@ import com.gerar.relatorios.model.entities.Usuario;
 
 public interface UsuarioRepository extends JpaRepository<Usuario, Long>{
 	
-	Usuario findByLogin(String login);
+	Usuario findByNome(String nome);
 
 }
