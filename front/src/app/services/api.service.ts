@@ -7,8 +7,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class ApiService {
-  private baseURL = environment.baseURL;
-  private apiURL = `${this.baseURL}api/`;
+  private baseURL = environment.API_URL;
 
   constructor(private http: HttpClient) {}
 
@@ -16,7 +15,6 @@ export class ApiService {
 
   register(uri: string, data: Agente) {
     console.log(data);
-    return this.http.post<Agente>(this.apiURL + uri, data);
   }
 
   get(uri: string) {}
