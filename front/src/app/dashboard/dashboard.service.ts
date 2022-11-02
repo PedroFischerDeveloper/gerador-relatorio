@@ -1,15 +1,20 @@
+import { HttpClient } from '@angular/common/http';
 import { LocalStorageServiceService } from './../services/local-storage-service.service';
 import { Injectable } from '@angular/core';
 import { ListaDeUsuarios } from './ListaDeUsuarios';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class DashboardService {
-  private url = '';
+  private API_URL = environment.API_URL;
   public users: ListaDeUsuarios[] = [];
 
-  constructor(private localStorageServiceService: LocalStorageServiceService) {
+  constructor(
+    private localStorageServiceService: LocalStorageServiceService,
+    private httpClient: HttpClient
+  ) {
     if (this.localStorageServiceService.get('usuarios')) {
       const users = this.localStorageServiceService.get('usuarios');
 
@@ -39,6 +44,10 @@ export class DashboardService {
 
   getUsers() {
     console.log(this.users);
+    console.log(this.API_URL);
+    this.httpClient.get(`${this.API_URL}/usuario`).subscribe((res) => {
+      console.log(res);
+    });
 
     return this.users;
   }
