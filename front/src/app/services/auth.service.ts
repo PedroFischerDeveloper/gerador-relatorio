@@ -31,7 +31,6 @@ export class AuthService {
     } else {
       this.authenticated = false;
       this.showMenuEmmiter.emit(false);
-      this.isAdmin.emit(false);
       this.toast.showMessageError('Ops!', 'CPF ou Senha inválidos!');
     }
   }

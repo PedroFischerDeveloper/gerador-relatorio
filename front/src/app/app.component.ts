@@ -11,7 +11,6 @@ export class AppComponent {
   title = 'gerador-relatorio';
 
   public showMenu: boolean = false;
-  public admin: boolean = false;
 
   constructor(
     private authService: AuthService,

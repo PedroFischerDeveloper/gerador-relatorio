@@ -23,12 +23,7 @@ export class LoginComponent implements OnInit {
     Validators.required,
     Validators.email,
   ]);
-  constructor(
-    private fb: FormBuilder,
-    private router: Router,
-    private auth: AuthService,
-    private toast: ToastService
-  ) {}
+  constructor(private auth: AuthService) {}
 
   ngOnInit(): void {
     this.form = new FormGroup({

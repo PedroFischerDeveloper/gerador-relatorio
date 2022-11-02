@@ -11,16 +11,19 @@ import { LocalStorageServiceService } from 'src/app/services/local-storage-servi
 })
 export class FooterComponent implements OnInit {
   public showMenuEmmiter = new EventEmitter<boolean>();
-
+  public admin: boolean = false;
   public showMenu: boolean = false;
 
   constructor(
     private router: Router,
     private localStorage: LocalStorageServiceService,
-    private geradorRelatorioService: GeradorRelatorioService
+    private geradorRelatorioService: GeradorRelatorioService,
+    private authService: AuthService
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.authService.isAdmin.subscribe((admin) => (this.admin = admin));
+  }
 
   sendToServer() {
     let localData = this.localStorage.get('coleta');
