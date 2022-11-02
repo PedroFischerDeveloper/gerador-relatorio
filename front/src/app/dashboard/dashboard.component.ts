@@ -2,7 +2,6 @@ import { ListaDeUsuarios } from './ListaDeUsuarios';
 import { DashboardService } from './dashboard.service';
 
 import { Component, EventEmitter, OnInit } from '@angular/core';
-import { AuthService } from '../services/auth.service';
 import { GeradorRelatorioService } from '../services/gerador-relatorio.service';
 import { LocalStorageServiceService } from '../services/local-storage-service.service';
 
@@ -19,7 +18,6 @@ export class DashboardComponent implements OnInit {
 
   constructor(
     private dashboardService: DashboardService,
-
     private geradorRelatorioService: GeradorRelatorioService,
     private localStorage: LocalStorageServiceService
   ) {}
