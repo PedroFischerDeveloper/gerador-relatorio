@@ -18,6 +18,8 @@ export class FooterComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  sendToServer() {}
+
   navTo(navTo: string) {
     this.router.navigateByUrl(navTo);
   }

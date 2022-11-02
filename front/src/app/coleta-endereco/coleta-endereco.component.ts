@@ -99,51 +99,55 @@ export class ColetaEnderecoComponent implements OnInit {
 
     console.log(data);
     if (data != null) {
-      const index = this.fila.findIndex(
-        (item: any) =>
-          item.name === data.name &&
-          item.ativo === data.ativo &&
-          item.responsavel === data.responsavel &&
-          item.criadouro === data.criadouro &&
-          item.larvas === data.larvas &&
-          item.aviso === data.aviso &&
-          item.responsavel === data.responsavel &&
-          item.funcao === data.funcao &&
-          item.observacao === data.observacao &&
-          item.cep === data.cep &&
-          item.rua === data.rua &&
-          item.numero === data.numero &&
-          item.complemento === data.complemento &&
-          item.bairro === data.bairro &&
-          item.cidade === data.cidade
-      );
+      const index = this.isEqualObject(this.fila, data);
 
       if (index === 1) {
         this.toastr.showMessageError('Item já existe na fila : (', 'Ops!!');
       } else {
         this.fila.push(data);
-        this.toastr.showMessageSuccess('Item  salvo na fila : )', 'Eba!!');
+
+        if (!this.localStorage.get('coleta')) {
+          this.localStorage.set('coleta', this.fila);
+        } else {
+          let localStorageData = this.localStorage.get('coleta');
+
+          if (this.isEqualObject(localStorageData, data) === -1) {
+            localStorageData.push(this.fila);
+            this.localStorage.set('coleta', localStorageData);
+            this.toastr.showMessageSuccess('Item  salvo na fila : )', 'Eba!!');
+          } else {
+            this.toastr.showMessageError('Item já existe na fila : (', 'Ops!!');
+          }
+        }
       }
     }
+  }
+
+  isEqualObject(array: any, data: any) {
+    return array.findIndex(
+      (item: any) =>
+        item.name === data.name &&
+        item.ativo === data.ativo &&
+        item.responsavel === data.responsavel &&
+        item.criadouro === data.criadouro &&
+        item.larvas === data.larvas &&
+        item.aviso === data.aviso &&
+        item.responsavel === data.responsavel &&
+        item.funcao === data.funcao &&
+        item.observacao === data.observacao &&
+        item.cep === data.cep &&
+        item.rua === data.rua &&
+        item.numero === data.numero &&
+        item.complemento === data.complemento &&
+        item.bairro === data.bairro &&
+        item.cidade === data.cidade
+    );
   }
 
   sendToLocalStorage() {
-    this.localStorage.set(`coleta-${this.add}`, this.fila);
-    this.add++;
-  }
-
-  isEquals(object1: any, object2: any) {
-    const keys1 = Object.keys(object1);
-    const keys2 = Object.keys(object2);
-    if (keys1.length !== keys2.length) {
-      return false;
-    }
-    for (let key of keys1) {
-      if (object1[key] !== object2[key]) {
-        return false;
-      }
-    }
-    return true;
+    this.toastr.showMessageSuccess('Item  salvo no banco offline : )', 'Eba!!');
+    console.log(Object.values(this.fila).length === 0);
+    this.localStorage.set('coleta', this.fila);
   }
 
   buscaCep(value: any) {
