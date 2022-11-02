@@ -1,0 +1,94 @@
+<div class="vh-100 d-flex justify-content-center my-5">
+  <div class="col-md-8 col-sm-12 rounded-5 border-primary bg-white">
+    <h4 class="text-center mb-4 text-primary display-6 text-primary">
+      Endereço da coleta
+    </h4>
+
+    <form
+      class="form"
+      [formGroup]="form"
+      (ngSubmit)="onSubmit()"
+      #formDir="ngForm"
+    >
+      <mat-card class="mat-elevation-z0 mb-5">
+        <div class="mb-3">
+          <mat-form-field class="full-width-field" appearance="fill">
+            <mat-label>CEP</mat-label>
+            <input
+              matInput
+              placeholder="cep"
+              formControlName="cep"
+              (blur)="buscaCep(this)"
+            />
+          </mat-form-field>
+        </div>
+
+        <div class="mb-3">
+          <mat-form-field class="full-width-field" appearance="fill">
+            <mat-label>Lougradouro/Rua</mat-label>
+            <input
+              matInput
+              placeholder="logradouro"
+              formControlName="logradouro"
+              maxlength="30"
+              minlength="3"
+            />
+          </mat-form-field>
+        </div>
+
+        <div class="mb-3">
+          <mat-form-field class="full-width-field" appearance="fill">
+            <mat-label>Número</mat-label>
+            <input
+              matInput
+              type="number"
+              placeholder="numero"
+              formControlName="numero"
+              maxlength="4"
+              minlength="1"
+            />
+          </mat-form-field>
+        </div>
+
+        <div class="mb-3">
+          <mat-form-field class="full-width-field" appearance="fill">
+            <mat-label>Complemento</mat-label>
+            <input
+              matInput
+              placeholder="complemento"
+              formControlName="complemento"
+              maxlength="50"
+              minlength="3"
+            />
+          </mat-form-field>
+        </div>
+
+        <div class="mb-3">
+          <mat-form-field class="full-width-field" appearance="fill">
+            <mat-label>Bairro</mat-label>
+            <input matInput placeholder="bairro" formControlName="bairro" />
+          </mat-form-field>
+        </div>
+
+        <div class="mb-3">
+          <mat-form-field class="full-width-field" appearance="fill">
+            <mat-label>Cidade</mat-label>
+            <input
+              matInput
+              placeholder="localidade"
+              formControlName="localidade"
+            />
+          </mat-form-field>
+        </div>
+        <div class="mb-4">
+          <button
+            mat-raised-button
+            class="full-btn outline-none bg-success text-white"
+          >
+            Registrar Coleta
+          </button>
+        </div>
+      </mat-card>
+    </form>
+  </div>
+</div>

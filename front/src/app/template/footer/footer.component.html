@@ -1,0 +1,40 @@
+<mat-toolbar class="footer">
+  <button
+    mat-raised-button
+    color="primary"
+    class="outline-none"
+    (click)="navTo('dashboard', true)"
+  >
+    <mat-icon fill="primary">dashboard</mat-icon>
+  </button>
+  <button
+    mat-raised-button
+    color="primary"
+    class="outline-none"
+    (click)="sendToServer()"
+  >
+    <mat-icon class="outline-none text-center">cloud_upload</mat-icon>
+  </button>
+  <button mat-raised-button color="primary" class="outline-none">
+    <mat-icon class="outline-none text-center" (click)="download()"
+      >cloud_download</mat-icon
+    >
+  </button>
+
+  <button
+    mat-raised-button
+    color="primary"
+    class="outline-none"
+    (click)="navTo('coleta', true)"
+  >
+    <mat-icon class="outline-none text-center">add</mat-icon>
+  </button>
+  <button
+    mat-raised-button
+    color="primary"
+    class="outline-none"
+    (click)="navTo('cadastro', true)"
+  >
+    <mat-icon class="outline-none text-center">person</mat-icon>
+  </button>
+</mat-toolbar>

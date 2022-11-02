@@ -1,4 +1,37 @@
 /* You can add global styles to this file, and also import other style files */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+}
+
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body, h1, h2, ul, li, a{
+  margin: 0px;
+  padding: 0px;
+}
+
 body {
-  background: #007bff!important;
+  font-family: "Nunito", Helvetica, sans-serif;
+  color: #222222;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+* {
+  box-sizing: border-box;
 }

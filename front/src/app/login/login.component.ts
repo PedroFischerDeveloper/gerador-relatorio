@@ -1,4 +1,5 @@
-import { ApiService } from './../services/api.service';
+import { AuthService } from 'src/app/services/auth.service';
+
 import { Component, OnInit } from '@angular/core';
 import {
   FormBuilder,
@@ -6,6 +7,8 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { Router } from '@angular/router';
+import { ToastService } from '../services/toast.service';
 
 @Component({
   selector: 'app-login',
@@ -16,18 +19,35 @@ export class LoginComponent implements OnInit {
   public form!: FormGroup;
   public URL = 'auth';
 
-  constructor(private fb: FormBuilder, private apiService: ApiService) {}
+  emailFormControl = new FormControl('', [
+    Validators.required,
+    Validators.email,
+  ]);
+  constructor(
+    private fb: FormBuilder,
+    private router: Router,
+    private auth: AuthService,
+    private toast: ToastService
+  ) {}
 
   ngOnInit(): void {
     this.form = new FormGroup({
       cpf: new FormControl('', [Validators.required]),
+<<<<<<< HEAD
       senha: new FormControl('', [Validators.required]),
+=======
+      senha: new FormControl('', [
+        Validators.required,
+        Validators.minLength(8),
+      ]),
+>>>>>>> front
     });
   }
 
   get cpf() {
     return this.form.get('cpf')!;
   }
+<<<<<<< HEAD
 
   get senha() {
     return this.form.get('senha')!;
@@ -35,8 +55,16 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
     console.log(this.form.value);
+=======
+>>>>>>> front
 
-    return false;
-    this.apiService.auth(this.URL, this.form.value);
+  get senha() {
+    return this.form.get('senha')!;
+  }
+
+  onLogin() {
+    this.auth.auth(this.form.value.cpf, this.form.value.senha);
+
+    // this.apiService.auth(this.URL, this.form.value);
   }
 }

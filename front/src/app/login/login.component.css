@@ -1,4 +1,19 @@
 .rounded {
+  max-width: 100%;
+  margin:  0 auto;
   width: 150px;
   height: 150px;
 }
+.outline-none {
+  outline: none;
+}
+.full-btn{
+  width: 100%!important;
+  min-width: unset!important;
+  padding: 0 5px;
+}
+.full-width-field {
+  width: 100%;
+  padding: 0 5px;
+}
+

@@ -1,0 +1,96 @@
+<section class="vh-100 d-flex justify-content-center my-5">
+  <div class="col-md-8 col-sm-12 rounded-5 border-primary bg-white">
+    <div class="text-center">
+      <h2 class="text-primary mt-3 mb-5 display-6">Cadastrar Colaborador</h2>
+      <form
+        class="form"
+        [formGroup]="form"
+        (ngSubmit)="onSubmit()"
+        #formDir="ngForm"
+      >
+        <mat-card class="mat-elevation-z0 mb-5">
+          <div class="mb-3">
+            <mat-form-field class="full-width-field" appearance="fill">
+              <mat-label>Nome Entrevistado</mat-label>
+              <input
+                matInput
+                placeholder="name"
+                formControlName="name"
+                formControlName="name"
+              />
+            </mat-form-field>
+          </div>
+          <div class="mb-3">
+            <mat-form-field class="full-width-field" appearance="fill">
+              <mat-label>Criadouro</mat-label>
+              <input
+                matInput
+                placeholder="criadouro"
+                formControlName="criadouro"
+              />
+            </mat-form-field>
+          </div>
+          <div class="mb-3">
+            <mat-form-field class="full-width-field" appearance="fill">
+              <mat-label>Nome responsável</mat-label>
+              <input
+                matInput
+                placeholder="responsavel"
+                formControlName="responsavel"
+              />
+            </mat-form-field>
+          </div>
+          <div class="mb-3">
+            <mat-form-field class="full-width-field" appearance="fill">
+              <mat-label>Função</mat-label>
+              <select matNativeControl formControlName="funcao">
+                <option value="agente" selected>Agente</option>
+                <option value="estagiario">Estagiário</option>
+              </select>
+            </mat-form-field>
+          </div>
+
+          <div class="mb-3">
+            <mat-form-field class="full-width-field" appearance="fill">
+              <mat-label>Atividade</mat-label>
+              <select matNativeControl formControlName="ativo">
+                <option value="1" selected>Vistoria</option>
+                <option value="2">Retorno</option>
+                <option value="3">Recusa</option>
+              </select>
+            </mat-form-field>
+          </div>
+
+          <div class="mb-3">
+            <mat-form-field class="full-width-field" appearance="fill">
+              <mat-label>Larvas</mat-label>
+              <select matNativeControl formControlName="larvas">
+                <option value="false" selected>Não</option>
+                <option value="true">Sim</option>
+              </select>
+            </mat-form-field>
+          </div>
+
+          <div class="mb-3">
+            <mat-form-field class="full-width-field" appearance="fill">
+              <mat-label>Aviso</mat-label>
+              <select matNativeControl formControlName="aviso">
+                <option value="false" selected>Não</option>
+                <option value="true">Sim</option>
+              </select>
+            </mat-form-field>
+          </div>
+
+          <div class="mb-3">
+            <button
+              mat-raised-button
+              class="full-btn outline-none bg-success text-white"
+            >
+              Continuar
+            </button>
+          </div>
+        </mat-card>
+      </form>
+    </div>
+  </div>
+</section>

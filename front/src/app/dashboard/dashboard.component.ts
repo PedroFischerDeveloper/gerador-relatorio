@@ -1,5 +1,9 @@
-import { ApiService } from './../services/api.service';
-import { Component, OnInit } from '@angular/core';
+import { ListaDeUsuarios } from './ListaDeUsuarios';
+import { DashboardService } from './dashboard.service';
+
+import { Component, EventEmitter, OnInit } from '@angular/core';
+import { GeradorRelatorioService } from '../services/gerador-relatorio.service';
+import { LocalStorageServiceService } from '../services/local-storage-service.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -7,21 +11,26 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./dashboard.component.css'],
 })
 export class DashboardComponent implements OnInit {
+  public showMenuEmmiter = new EventEmitter<boolean>();
   public URL = 'auth';
 
-  constructor(private apiService: ApiService) {}
+  public users: ListaDeUsuarios[] = [];
 
-  ngOnInit(): void {}
+  constructor(
+    private dashboardService: DashboardService,
+    private geradorRelatorioService: GeradorRelatorioService,
+    private localStorage: LocalStorageServiceService
+  ) {}
 
-  list() {
-    this.apiService.get(this.URL);
+  ngOnInit(): void {
+    this.showMenuEmmiter.emit(true);
+    let localData = this.localStorage.get('coleta');
+    this.users = this.dashboardService.getUsers();
   }
 
-  edit(id: number) {
-    this.apiService.edit(this.URL, id);
-  }
+  list() {}
 
-  delete(id: number) {
-    this.apiService.delete(this.URL, id);
+  download(id: number) {
+    this.geradorRelatorioService.criarExcel(id);
   }
 }

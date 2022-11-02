@@ -1,0 +1,17 @@
+.rounded {
+  display: block;
+  width: 150px;
+  border-radius: 150px;
+}
+.full-width-field {
+  width: 100%;
+  padding: 0 5px;
+}
+.outline-none {
+  outline: none;
+}
+.full-btn{
+  width: 100%!important;
+  min-width: unset!important;
+  padding: 0 5px;
+}
