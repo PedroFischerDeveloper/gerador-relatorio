@@ -1,4 +1,4 @@
-package com.gerador.relatorio.controller;
+package com.gerar.relatorios.controller;
 
 import java.util.List;
 
@@ -16,21 +16,19 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.gerador.relatorio.exception.AuthorizationException;
-import com.gerador.relatorio.model.entities.Usuario;
-import com.gerador.relatorio.service.UsuariosService;
+import com.gerar.relatorios.exception.AuthorizationException;
+import com.gerar.relatorios.model.entities.Usuario;
+import com.gerar.relatorios.service.UsuariosService;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 
-
-
 @RestController
 @CrossOrigin()
-@RequestMapping("/api/usuario")
-public class UsuarioController implements ControllerInterface<Usuario>{
-
+@RequestMapping("/usuario")
+public class UsuarioController implements ControllerInterfaces<Usuario>{
+	
 	@Autowired
 	private UsuariosService service;
 
@@ -74,6 +72,7 @@ public class UsuarioController implements ControllerInterface<Usuario>{
 
 	@Override
 	@PostMapping(produces ="application/json")
+	@Operation(summary = "Grava um novo usuario")
 	public ResponseEntity<Usuario> post(@RequestBody Usuario obj) {
 		service.create(obj);
 		return ResponseEntity.ok(obj);
@@ -81,6 +80,7 @@ public class UsuarioController implements ControllerInterface<Usuario>{
 
 	@Override
 	@PutMapping(produces ="application/json")
+	@Operation(summary = "Atualiza os dados de um usuario")
 	public ResponseEntity<?> put(@RequestBody Usuario obj) {
 		if(service.update(obj)) {
 			return ResponseEntity.ok(obj);
@@ -91,6 +91,7 @@ public class UsuarioController implements ControllerInterface<Usuario>{
 	@Override
 	@PreAuthorize("hasAnyRole('ADMIN')")
 	@DeleteMapping(value="/{id}")
+	@Operation(summary = "Exclui um usuario")
 	public ResponseEntity<?> delete(@PathVariable("id") Long id) {
 		if(service.delete(id)) {
 			return ResponseEntity.ok().build();

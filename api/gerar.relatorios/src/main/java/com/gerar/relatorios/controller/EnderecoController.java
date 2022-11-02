@@ -1,4 +1,4 @@
-package com.gerador.relatorio.controller;
+package com.gerar.relatorios.controller;
 
 import java.util.List;
 
@@ -16,55 +16,45 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.gerador.relatorio.exception.AuthorizationException;
-import com.gerador.relatorio.model.entities.Usuario;
-import com.gerador.relatorio.service.UsuariosService;
+import com.gerar.relatorios.exception.AuthorizationException;
+import com.gerar.relatorios.model.entities.Endereco;
+import com.gerar.relatorios.service.EnderecoService;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 
-
-
 @RestController
 @CrossOrigin()
-@RequestMapping("/api/usuario")
-public class UsuarioController implements ControllerInterface<Usuario>{
-
+@RequestMapping("/endereco")
+public class EnderecoController implements ControllerInterfaces<Endereco>{
+	
 	@Autowired
-	private UsuariosService service;
-
+	private EnderecoService service;
+	
 	@Override
-	@GetMapping(produces ="application/json")
 	@ApiResponses(value = {
 			@ApiResponse(responseCode = "200",
-			description = "Retorna a lista de usuários"),
+			description = "Retorna a lista de fornecedores"),
 			@ApiResponse(responseCode = "403",
 			description = "Você não tem permissão para acessar este recurso"),
 			@ApiResponse(responseCode = "500",
 			description = "Foi gerada uma exceção"),
 			})
-	@Operation(summary = "Devolve uma lista de usuários")
-	public ResponseEntity<List<Usuario>> getAll() {
+	@Operation(summary = "Devolve a lista de todos os endereços coletados")
+	@GetMapping(produces ="application/json")
+	public ResponseEntity<List<Endereco>> getAll() {
 		return ResponseEntity.ok(service.findAll());
 	}
 
 	@Override
-	@ApiResponses(value = {
-			@ApiResponse(responseCode = "200",
-			description = "Retorna o usuário de acordo com seu id"),
-			@ApiResponse(responseCode = "403",
-			description = "Você não tem permissão para acessar este recurso"),
-			@ApiResponse(responseCode = "404",
-			description = "Não existe nenhum usuário com esse id"),
-			})
-	@Operation(summary = "Devolve o usuário dado seu id")
+	@Operation(summary = "Devolve o endereço dado seu id")
 	@GetMapping(value="/{id}", produces ="application/json")
 	public ResponseEntity<?> get(@PathVariable("id") Long id) {
 		try {
-		Usuario usuario = service.findById(id);
-		if(usuario != null) {
-			return ResponseEntity.ok(usuario);
+		Endereco _endereco = service.findById(id);
+		if(_endereco != null) {
+			return ResponseEntity.ok(_endereco);
 		}
 		return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
 		}catch (AuthorizationException e) {
@@ -74,14 +64,17 @@ public class UsuarioController implements ControllerInterface<Usuario>{
 
 	@Override
 	@PostMapping(produces ="application/json")
-	public ResponseEntity<Usuario> post(@RequestBody Usuario obj) {
+	@Operation(summary = "Grava um novo endereço")
+	public ResponseEntity<Endereco> post(@RequestBody Endereco obj) {
 		service.create(obj);
 		return ResponseEntity.ok(obj);
 	}
 
+
 	@Override
 	@PutMapping(produces ="application/json")
-	public ResponseEntity<?> put(@RequestBody Usuario obj) {
+	@Operation(summary = "Atualiza os dados de um endereço")
+	public ResponseEntity<?> put(@RequestBody Endereco obj) {
 		if(service.update(obj)) {
 			return ResponseEntity.ok(obj);
 		}
@@ -91,6 +84,7 @@ public class UsuarioController implements ControllerInterface<Usuario>{
 	@Override
 	@PreAuthorize("hasAnyRole('ADMIN')")
 	@DeleteMapping(value="/{id}")
+	@Operation(summary = "Exclui um endereço")
 	public ResponseEntity<?> delete(@PathVariable("id") Long id) {
 		if(service.delete(id)) {
 			return ResponseEntity.ok().build();
@@ -98,5 +92,6 @@ public class UsuarioController implements ControllerInterface<Usuario>{
 		
 		return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
 	}
+
 
 }

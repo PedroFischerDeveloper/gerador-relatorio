@@ -1,6 +1,7 @@
-package com.gerador.relatorio.security;
+package com.gerar.relatorios.security;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -15,11 +16,11 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.gerador.relatorio.DTO.CredenciaisDTO;
-import com.gerador.relatorio.model.entities.Usuario;
-import com.gerador.relatorio.model.repository.UsuarioRepository;
+import com.gerar.relatorios.dto.CredenciaisDTO;
+import com.gerar.relatorios.model.entities.Usuario;
+import com.gerar.relatorios.model.repository.UsuarioRepository;
+import com.google.gson.Gson;
 
 
 
@@ -32,20 +33,18 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 	private UsuarioRepository _users;
 	
 	
-	
-	public JWTAuthenticationFilter(AuthenticationManager authenticationManager, JWTUtil jwtUtil, UsuarioRepository _users) {
- 
-        this.authenticationManager = authenticationManager;
-        this.jwtUtil = jwtUtil;
-        this._users = _users;
-    }
+	public JWTAuthenticationFilter(AuthenticationManager authenticationManager, JWTUtil jwtUtil , UsuarioRepository _users) {
+		this.authenticationManager = authenticationManager;
+		this.jwtUtil = jwtUtil;	
+		this._users = _users;
+	}
 	
 	
 	@Override
 	public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) {
 		try {
 			CredenciaisDTO creds = new ObjectMapper().readValue(request.getInputStream(), CredenciaisDTO.class);
-			UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(creds.getLogin(),
+			UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(creds.getCpf(),
 					creds.getSenha(), new ArrayList<>());
 			Authentication auth = authenticationManager.authenticate(authToken);
 			return auth;
@@ -61,7 +60,7 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 		String token = jwtUtil.generateToken(username);
 		response.addHeader("Authentication", "Bearer " + token);
 		response.addHeader("access-control-expose-headers", "Authorization");
-		Usuario user = (Usuario) _users.findByLogin(username);
+		Usuario user = (Usuario) _users.findByNome(username);
 		user.setSenha(null);
 		/*Gson gson = new Gson();
 		String cliStr = gson.toJson(user);
@@ -77,7 +76,7 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 		String json = "{\"Auth\":\"Bearer " + token.toString() + "\","
 						+ "\"userId\":\""+ user.getId() + "\","
 						+"\"userPerfil\":\""+ user.getPerfis()+"\","
-						+"\"userLogin\":\""+ user.getLogin() + "\""
+						+"\"userLogin\":\""+ user.getCpf() + "\""
 						+ "}";
 		response.getWriter().append(json); 
 		
@@ -101,7 +100,7 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 	}
 	
 
-	
+
 	
 
 	
