@@ -1,3 +1,4 @@
+import { CheckConnectionService } from './services/check-connection.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { Component } from '@angular/core';
 
@@ -11,9 +12,14 @@ export class AppComponent {
 
   public showMenu: boolean = false;
 
-  constructor(private authService: AuthService) {}
+  constructor(
+    private authService: AuthService,
+    private checkConnectionService: CheckConnectionService
+  ) {}
 
   ngOnInit() {
+    this.checkConnectionService.checkStatus();
+
     this.authService.showMenuEmmiter.subscribe(
       (show) => (this.showMenu = show)
     );

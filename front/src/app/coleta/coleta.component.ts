@@ -5,13 +5,9 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
-import { ApiService } from '../services/api.service';
+
 import { ToastrService } from 'ngx-toastr';
-import { Agente } from '../shared/models/Agente.model';
-import { AuthService } from '../services/auth.service';
-import { ConsultaCepService } from '../services/consulta-cep.service';
 import { Router } from '@angular/router';
-import { CadastrarColetaService } from '../services/cadastrar-coleta.service';
 
 @Component({
   selector: 'app-coleta',
@@ -20,17 +16,8 @@ import { CadastrarColetaService } from '../services/cadastrar-coleta.service';
 })
 export class ColetaComponent implements OnInit {
   public form!: FormGroup;
-  public transData = new EventEmitter<any>();
 
-  constructor(
-    private fb: FormBuilder,
-    private apiService: ApiService,
-    private toastr: ToastrService,
-    private isAuth: AuthService,
-    private consultaCepService: ConsultaCepService,
-    private router: Router,
-    private cadastrarColetaService: CadastrarColetaService
-  ) {}
+  constructor(private toastr: ToastrService, private router: Router) {}
 
   ngOnInit(): void {
     this.form = new FormGroup({

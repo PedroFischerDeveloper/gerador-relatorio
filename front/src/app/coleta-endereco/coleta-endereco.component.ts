@@ -10,9 +10,6 @@ import {
   Validators,
 } from '@angular/forms';
 import { ToastService } from '../services/toast.service';
-import { ApiService } from '../services/api.service';
-import { AuthService } from '../services/auth.service';
-import { CadastrarColetaService } from '../services/cadastrar-coleta.service';
 import { ConsultaCepService } from '../services/consulta-cep.service';
 import { LocalStorageServiceService } from '../services/local-storage-service.service';
 
@@ -30,12 +27,8 @@ export class ColetaEnderecoComponent implements OnInit {
   public fila = [{}];
 
   constructor(
-    private fb: FormBuilder,
-    private apiService: ApiService,
     private toastr: ToastService,
-    private isAuth: AuthService,
     private consultaCepService: ConsultaCepService,
-    private cadastrarColetaService: CadastrarColetaService,
     private route: ActivatedRoute,
     private network: NetworkService,
     private localStorage: LocalStorageServiceService
@@ -44,11 +37,11 @@ export class ColetaEnderecoComponent implements OnInit {
   ngOnInit(): void {
     this.form = new FormGroup({
       cep: new FormControl('', [Validators.required]),
-      rua: new FormControl('', [Validators.required]),
+      logradouro: new FormControl('', [Validators.required]),
       numero: new FormControl('', [Validators.required]),
       complemento: new FormControl('', [Validators.required]),
       bairro: new FormControl('', [Validators.required]),
-      cidade: new FormControl('', [Validators.required]),
+      localidade: new FormControl('', [Validators.required]),
     });
 
     console.log(this.network);
@@ -79,6 +72,10 @@ export class ColetaEnderecoComponent implements OnInit {
   }
 
   onSubmit() {
+    if (this.form.invalid) {
+      return;
+    }
+
     const data = {
       sent: false,
       name: this.coleta.name,
@@ -90,11 +87,11 @@ export class ColetaEnderecoComponent implements OnInit {
       funcao: this.coleta.funcao,
       observacao: this.coleta.observacao,
       cep: this.form.value.cep,
-      rua: this.form.value.rua,
+      rua: this.form.value.logradouro,
       numero: this.form.value.numero,
       complemento: this.form.value.complemento,
       bairro: this.form.value.bairro,
-      cidade: this.form.value.cidade,
+      cidade: this.form.value.localidade,
     };
 
     console.log(data);
@@ -156,15 +153,7 @@ export class ColetaEnderecoComponent implements OnInit {
     if (this.cep.value != null || this.cep.value != '') {
       this.consultaCepService
         .consultaCep(this.cep.value)
-        .subscribe((res: any) =>
-          this.form.patchValue({
-            cep: res.cep,
-            rua: res.rua,
-            endereco: res.endereco,
-            bairro: res.bairro,
-            cidade: res.cidade,
-          })
-        );
+        .subscribe((res: any) => this.form.patchValue(res));
     }
   }
 }

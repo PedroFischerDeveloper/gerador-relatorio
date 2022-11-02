@@ -1,10 +1,13 @@
-import { ApiService } from './../services/api.service';
-import { Component, OnInit } from '@angular/core';
+import { ListaDeUsuarios } from './ListaDeUsuarios';
+import { DashboardService } from './dashboard.service';
+
+import { Component, EventEmitter, OnInit } from '@angular/core';
 import { ListUser } from '../shared/models/ListUser.model';
 import { AuthService } from '../services/auth.service';
 import { GeradorRelatorioService } from '../services/gerador-relatorio.service';
 import { Agente } from '../shared/models/Agente.model';
-import { ToastService } from '../services/toast.service';
+
+import { LocalStorageServiceService } from '../services/local-storage-service.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -12,49 +15,31 @@ import { ToastService } from '../services/toast.service';
   styleUrls: ['./dashboard.component.css'],
 })
 export class DashboardComponent implements OnInit {
+  public showMenuEmmiter = new EventEmitter<boolean>();
   public URL = 'auth';
-  public listAgente: Array<Agente> = [];
 
-  public users: ListUser[] = [
-    { nome: 'Pedro', funcao: 'agente' },
-    { nome: 'João', funcao: 'agente' },
-    { nome: 'Luiz', funcao: 'agente' },
-    { nome: 'Marcos', funcao: 'agente' },
-    { nome: 'Pedro', funcao: 'agente' },
-    { nome: 'João', funcao: 'agente' },
-    { nome: 'Luiz', funcao: 'agente' },
-    { nome: 'Marcos', funcao: 'agente' },
-    { nome: 'Pedro', funcao: 'agente' },
-    { nome: 'João', funcao: 'agente' },
-    { nome: 'Luiz', funcao: 'agente' },
-    { nome: 'Marcos', funcao: 'agente' },
-    { nome: 'Pedro', funcao: 'agente' },
-    { nome: 'João', funcao: 'agente' },
-    { nome: 'Luiz', funcao: 'agente' },
-    { nome: 'Marcos', funcao: 'agente' },
-  ];
+  public users: ListaDeUsuarios[] = [];
 
   constructor(
-    private apiService: ApiService,
+    private dashboardService: DashboardService,
     private isAuth: AuthService,
-    private geradorRelatorioService: GeradorRelatorioService
-  ) {
-    this.listAgente = this.geradorRelatorioService.list();
-  }
+    private geradorRelatorioService: GeradorRelatorioService,
+    private localStorage: LocalStorageServiceService
+  ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.showMenuEmmiter.emit(true);
+    let localData = this.localStorage.get('coleta');
+    this.users = this.dashboardService.getUsers();
+  }
 
   list() {}
 
-  download(agente: Agente) {
-    this.geradorRelatorioService.criarExcel(agente);
+  download(id: number) {
+    this.geradorRelatorioService.criarExcel(id);
   }
 
-  edit(id: number) {
-    this.apiService.edit(this.URL, id);
-  }
+  edit(id: number) {}
 
-  delete(id: number) {
-    this.apiService.delete(this.URL, id);
-  }
+  delete(id: number) {}
 }

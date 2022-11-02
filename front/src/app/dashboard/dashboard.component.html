@@ -4,17 +4,17 @@
 
     <mat-card-title-group
       class="my-3 p-3 background mat-elevation-z4"
-      *ngFor="let agente of listAgente"
+      *ngFor="let user of users"
     >
-      <mat-card-title class="color">{{ agente.nome }}</mat-card-title>
+      <mat-card-title class="color">{{ user.nome }}</mat-card-title>
       <mat-card-subtitle class="text-muted">{{
-        agente.funcao
+        user.funcao
       }}</mat-card-subtitle>
       <button
         mat-button
         color="primary"
         class="outline-none"
-        (click)="download(agente)"
+        (click)="download(user.id)"
       >
         <mat-icon>cloud_download</mat-icon>
       </button>

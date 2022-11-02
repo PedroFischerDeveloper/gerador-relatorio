@@ -1,14 +1,7 @@
-<section class="container h-50">
-  <div class="row h-100 justify-content-center align-items-center">
-    <div class="col-lg-6 col-md-6 text-center">
-      <div class="col-sm-12 mt-1">
-        <img
-          src="../../assets/img/login.jpg"
-          class="rounded text-center"
-          alt="Login"
-        />
-      </div>
-      <h2 class="text-primary mt-3 mb-5 display-6">Cadastro</h2>
+<section class="vh-100 d-flex justify-content-center my-5">
+  <div class="col-md-8 col-sm-12 rounded-5 border-primary bg-white">
+    <div class="text-center">
+      <h2 class="text-primary mt-3 mb-5 display-6">Cadastrar Colaborador</h2>
       <form
         [formGroup]="form"
         (ngSubmit)="onSubmit()"
@@ -40,6 +33,17 @@
           />
         </mat-form-field>
 
+        <div class="mb-3">
+          <mat-form-field class="full-width-field" appearance="fill">
+            <mat-label>Função</mat-label>
+            <select matNativeControl formControlName="funcao">
+              <option value="agente" selected>Admin</option>
+              <option value="agente" selected>Agente</option>
+              <option value="estagiario">Estagiário</option>
+            </select>
+          </mat-form-field>
+        </div>
+
         <mat-form-field class="full-width-field" appearance="fill">
           <mat-label>Senha</mat-label>
           <input
@@ -63,14 +67,11 @@
         <div class="example-button-row">
           <button
             mat-raised-button
-            class="full-btn outline-none bg-success text-white"
+            class="full-btn outline-none bg-success text-white mb-5"
             color="primary"
           >
             Cadastrar
           </button>
-          <a class="mt-2" mat-button color="primary" [routerLink]="['']"
-            >Logar</a
-          >
         </div>
       </form>
     </div>

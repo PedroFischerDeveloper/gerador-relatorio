@@ -48,7 +48,7 @@ export class GeradorRelatorioService {
     return this.listAgente;
   }
 
-  criarExcel(agente: Agente) {
+  criarExcel(id: number) {
     const headings = [
       [
         'Data',
@@ -109,5 +109,104 @@ export class GeradorRelatorioService {
     xlsx(data, settings); // Will download the excel file
   }
 
-  gerarExcel() {}
+  gerarExcel() {
+    const headings = [
+      [
+        'Data',
+        'L/Q - N da Casa',
+        'Atividade',
+        'Criadouro',
+        'Larvas',
+        'Aviso',
+        'Responsável',
+        'Observação',
+        'Estagiários',
+      ],
+    ];
+
+    let data = [
+      {
+        sheet: 'Módulo',
+        columns: [
+          { label: 'Data', value: 'data' },
+          { label: 'L/Q - N da Casa', value: 'LQ' },
+          { label: 'Atividade', value: 'atividade' },
+          { label: 'Criadouro', value: 'criadouro' },
+          { label: 'Larvas', value: 'larvas' },
+          { label: 'Aviso', value: 'aviso' },
+          { label: 'Responsável', value: 'responsavel' },
+          { label: 'Observação', value: 'observacao' },
+          { label: 'Função', value: 'funcao' },
+        ],
+        content: [
+          {
+            data: 'Marcos',
+            LQ: 20,
+            atividade: 'teste',
+            criadouro: 'teste',
+            larvas: 'S',
+            aviso: 'S',
+            responsavel: 'pedro fischer',
+            observacao: 'N',
+            funcao: 'Estagiário',
+          },
+          {
+            data: 'Marcos',
+            LQ: 20,
+            atividade: 'teste',
+            criadouro: 'teste',
+            larvas: 'S',
+            aviso: 'S',
+            responsavel: 'pedro fischer',
+            observacao: 'N',
+            funcao: 'Estagiário',
+          },
+          {
+            data: 'Marcos',
+            LQ: 20,
+            atividade: 'teste',
+            criadouro: 'teste',
+            larvas: 'S',
+            aviso: 'S',
+            responsavel: 'pedro fischer',
+            observacao: 'N',
+            funcao: 'Estagiário',
+          },
+          {
+            data: 'Marcos',
+            LQ: 20,
+            atividade: 'teste',
+            criadouro: 'teste',
+            larvas: 'S',
+            aviso: 'S',
+            responsavel: 'pedro fischer',
+            observacao: 'N',
+            funcao: 'Estagiário',
+          },
+          {
+            data: 'Marcos',
+            LQ: 20,
+            atividade: 'teste',
+            criadouro: 'teste',
+            larvas: 'S',
+            aviso: 'S',
+            responsavel: 'pedro fischer',
+            observacao: 'N',
+            funcao: 'Estagiário',
+          },
+        ],
+      },
+    ];
+
+    let settings = {
+      fileName: 'Relatório da coleta', // Name of the resulting spreadsheet
+      extraLength: 3, // A bigger number means that columns will be wider
+      writeMode: 'writeFile', // The available parameters are 'WriteFile' and 'write'. This setting is optional. Useful in such cases https://docs.sheetjs.com/docs/solutions/output#example-remote-file
+      writeOptions: {}, // Style options from https://github.com/SheetJS/sheetjs#writing-options
+      RTL: false, // Display the columns from right-to-left (the default value is false)
+    };
+
+    console.log('teste');
+    xlsx(data, settings); // Will download the excel file
+  }
 }

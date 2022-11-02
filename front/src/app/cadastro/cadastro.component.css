@@ -1,8 +1,11 @@
 .rounded {
-  max-width: 100%;
-  margin:  0 auto;
+  display: block;
   width: 150px;
-  height: 150px;
+  border-radius: 150px;
+}
+.full-width-field {
+  width: 100%;
+  padding: 0 5px;
 }
 .outline-none {
   outline: none;
@@ -10,9 +13,5 @@
 .full-btn{
   width: 100%!important;
   min-width: unset!important;
-  padding: 0 5px;
-}
-.full-width-field {
-  width: 100%;
   padding: 0 5px;
 }
