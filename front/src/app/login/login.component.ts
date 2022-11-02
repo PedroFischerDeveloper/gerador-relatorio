@@ -33,30 +33,16 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     this.form = new FormGroup({
       cpf: new FormControl('', [Validators.required]),
-<<<<<<< HEAD
-      senha: new FormControl('', [Validators.required]),
-=======
       senha: new FormControl('', [
         Validators.required,
         Validators.minLength(8),
       ]),
->>>>>>> front
     });
   }
 
   get cpf() {
     return this.form.get('cpf')!;
   }
-<<<<<<< HEAD
-
-  get senha() {
-    return this.form.get('senha')!;
-  }
-
-  onSubmit() {
-    console.log(this.form.value);
-=======
->>>>>>> front
 
   get senha() {
     return this.form.get('senha')!;
