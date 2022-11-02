@@ -44,7 +44,10 @@
         <div class="mb-3">
           <mat-form-field class="full-width-field" appearance="fill">
             <mat-label>Função</mat-label>
-            <input matInput placeholder="funcao" formControlName="funcao" />
+            <select matNativeControl formControlName="funcao">
+              <option value="agente" selected>Agente</option>
+              <option value="estagiario">Estagiário</option>
+            </select>
           </mat-form-field>
         </div>
 

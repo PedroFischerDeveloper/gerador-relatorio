@@ -1,5 +1,5 @@
 import { NetworkService } from './../services/network.service';
-import { Network } from '@capacitor/network';
+
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
@@ -9,11 +9,12 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
-import { ToastrService } from 'ngx-toastr';
+import { ToastService } from '../services/toast.service';
 import { ApiService } from '../services/api.service';
 import { AuthService } from '../services/auth.service';
 import { CadastrarColetaService } from '../services/cadastrar-coleta.service';
 import { ConsultaCepService } from '../services/consulta-cep.service';
+import { LocalStorageServiceService } from '../services/local-storage-service.service';
 
 @Component({
   selector: 'app-coleta-endereco',
@@ -22,18 +23,22 @@ import { ConsultaCepService } from '../services/consulta-cep.service';
 })
 export class ColetaEnderecoComponent implements OnInit {
   public form!: FormGroup;
+
   public coleta: any;
+  public add = 0;
+  public id = 0;
   public fila = [{}];
 
   constructor(
     private fb: FormBuilder,
     private apiService: ApiService,
-    private toastr: ToastrService,
+    private toastr: ToastService,
     private isAuth: AuthService,
     private consultaCepService: ConsultaCepService,
     private cadastrarColetaService: CadastrarColetaService,
     private route: ActivatedRoute,
-    private network: NetworkService
+    private network: NetworkService,
+    private localStorage: LocalStorageServiceService
   ) {}
 
   ngOnInit(): void {
@@ -73,16 +78,9 @@ export class ColetaEnderecoComponent implements OnInit {
     return this.form.get('endereco')!;
   }
 
-  showToastSuccess(message: string) {
-    return this.toastr.success(message);
-  }
-
-  showToastError(error: any) {
-    return this.toastr.error(error);
-  }
-
   onSubmit() {
     const data = {
+      sent: false,
       name: this.coleta.name,
       ativo: this.coleta.ativo,
       criadouro: this.coleta.criadouro,
@@ -99,12 +97,53 @@ export class ColetaEnderecoComponent implements OnInit {
       cidade: this.form.value.cidade,
     };
 
-    this.fila.push(data);
+    console.log(data);
+    if (data != null) {
+      const index = this.fila.findIndex(
+        (item: any) =>
+          item.name === data.name &&
+          item.ativo === data.ativo &&
+          item.responsavel === data.responsavel &&
+          item.criadouro === data.criadouro &&
+          item.larvas === data.larvas &&
+          item.aviso === data.aviso &&
+          item.responsavel === data.responsavel &&
+          item.funcao === data.funcao &&
+          item.observacao === data.observacao &&
+          item.cep === data.cep &&
+          item.rua === data.rua &&
+          item.numero === data.numero &&
+          item.complemento === data.complemento &&
+          item.bairro === data.bairro &&
+          item.cidade === data.cidade
+      );
+
+      if (index === 1) {
+        this.toastr.showMessageError('Item já existe na fila : (', 'Ops!!');
+      } else {
+        this.fila.push(data);
+        this.toastr.showMessageSuccess('Item  salvo na fila : )', 'Eba!!');
+      }
+    }
   }
 
-  saveLocalStorage() {
-    this.cadastrarColetaService.prepararUpload(this.fila);
-    this.fila = [{}];
+  sendToLocalStorage() {
+    this.localStorage.set(`coleta-${this.add}`, this.fila);
+    this.add++;
+  }
+
+  isEquals(object1: any, object2: any) {
+    const keys1 = Object.keys(object1);
+    const keys2 = Object.keys(object2);
+    if (keys1.length !== keys2.length) {
+      return false;
+    }
+    for (let key of keys1) {
+      if (object1[key] !== object2[key]) {
+        return false;
+      }
+    }
+    return true;
   }
 
   buscaCep(value: any) {

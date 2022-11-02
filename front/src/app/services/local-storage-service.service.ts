@@ -40,4 +40,18 @@ export class LocalStorageServiceService {
     }
     return false;
   }
+
+  updateFila(key: string, object: any): boolean {
+    let localData = null;
+
+    if (this.storage) {
+      localData = JSON.parse(this.storage.getItem(key)!);
+    }
+
+    if (localData) {
+      localData.forEach((item: any) => {});
+    }
+
+    return false;
+  }
 }

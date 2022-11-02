@@ -77,50 +77,12 @@ export class ColetaComponent implements OnInit {
     return this.form.get('ativo')!;
   }
 
-  get cep() {
-    return this.form.get('cep')!;
-  }
-
-  get rua() {
-    return this.form.get('rua')!;
-  }
-
-  get bairro() {
-    return this.form.get('bairro')!;
-  }
-
-  get cidade() {
-    return this.form.get('cidade')!;
-  }
-
-  get endereco() {
-    return this.form.get('endereco')!;
-  }
-
   showToastSuccess(message: string) {
     return this.toastr.success(message);
   }
 
   showToastError(error: any) {
     return this.toastr.error(error);
-  }
-
-  buscaCep(value: any) {
-    const data = '';
-
-    if (this.cep.value != null || this.cep.value != '') {
-      this.consultaCepService
-        .consultaCep(this.cep.value)
-        .subscribe((res: any) =>
-          this.form.patchValue({
-            cep: res.cep,
-            rua: res.rua,
-            endereco: res.endereco,
-            bairro: res.bairro,
-            cidade: res.cidade,
-          })
-        );
-    }
   }
 
   async onSubmit() {
