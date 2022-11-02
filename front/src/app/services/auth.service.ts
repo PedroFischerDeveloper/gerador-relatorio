@@ -10,6 +10,7 @@ export class AuthService {
   public authenticated: boolean = false;
 
   public showMenuEmmiter = new EventEmitter<boolean>();
+  public isAdmin = new EventEmitter<boolean>();
 
   constructor(
     private apiService: ApiService,
@@ -24,11 +25,13 @@ export class AuthService {
     if (cpf == '123' && senha == '123') {
       this.authenticated = true;
       this.showMenuEmmiter.emit(true);
+      this.isAdmin.emit(true);
 
       this.router.navigateByUrl('dashboard');
     } else {
       this.authenticated = false;
       this.showMenuEmmiter.emit(false);
+      this.isAdmin.emit(false);
       this.toast.showMessageError('Ops!', 'CPF ou Senha inválidos!');
     }
   }

@@ -2,11 +2,8 @@ import { ListaDeUsuarios } from './ListaDeUsuarios';
 import { DashboardService } from './dashboard.service';
 
 import { Component, EventEmitter, OnInit } from '@angular/core';
-import { ListUser } from '../shared/models/ListUser.model';
 import { AuthService } from '../services/auth.service';
 import { GeradorRelatorioService } from '../services/gerador-relatorio.service';
-import { Agente } from '../shared/models/Agente.model';
-
 import { LocalStorageServiceService } from '../services/local-storage-service.service';
 
 @Component({
@@ -22,7 +19,7 @@ export class DashboardComponent implements OnInit {
 
   constructor(
     private dashboardService: DashboardService,
-    private isAuth: AuthService,
+
     private geradorRelatorioService: GeradorRelatorioService,
     private localStorage: LocalStorageServiceService
   ) {}
@@ -38,8 +35,4 @@ export class DashboardComponent implements OnInit {
   download(id: number) {
     this.geradorRelatorioService.criarExcel(id);
   }
-
-  edit(id: number) {}
-
-  delete(id: number) {}
 }
