@@ -23,11 +23,16 @@ export class AuthService {
     console.log(senha);
 
     if (cpf == '123' && senha == '123') {
+      //chamada login
+
+      //
       this.authenticated = true;
       this.showMenuEmmiter.emit(true);
       this.isAdmin.emit(true);
 
-      this.router.navigateByUrl('dashboard');
+      this.router.navigate(['/dashboard'], {
+        queryParams: { id: JSON.stringify(4) },
+      });
     } else {
       this.authenticated = false;
       this.showMenuEmmiter.emit(false);

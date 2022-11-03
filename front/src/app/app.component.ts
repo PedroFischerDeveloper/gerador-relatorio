@@ -17,9 +17,9 @@ export class AppComponent {
     private checkConnectionService: CheckConnectionService
   ) {}
 
-  ngOnInit() {
-    this.authService.showMenuEmmiter.subscribe(
-      (show) => (this.showMenu = show)
+  async ngOnInit() {
+    await this.authService.showMenuEmmiter.subscribe((show) =>
+      console.log(show)
     );
   }
 }
