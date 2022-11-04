@@ -54,7 +54,7 @@
   <component name="RunManager">
     <configuration name="GerarRelatorioApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.gerar.relatorios.GerarRelatorioApplication" />
-      <module name="relatorio" />
+      <module name="gerar.relatorios" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.gerar.relatorios.*" />
