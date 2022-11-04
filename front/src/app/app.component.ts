@@ -11,15 +11,16 @@ export class AppComponent {
   title = 'gerador-relatorio';
 
   public showMenu: boolean = false;
+  public admin: boolean = false;
 
   constructor(
     private authService: AuthService,
     private checkConnectionService: CheckConnectionService
   ) {}
 
-  async ngOnInit() {
-    await this.authService.showMenuEmmiter.subscribe((show) =>
-      console.log(show)
+  ngOnInit() {
+    this.authService.showMenuEmmiter.subscribe(
+      (show) => (this.showMenu = show)
     );
   }
 }

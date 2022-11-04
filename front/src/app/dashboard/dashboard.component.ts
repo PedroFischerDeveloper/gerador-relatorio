@@ -32,13 +32,13 @@ export class DashboardComponent implements OnInit {
   async ngOnInit(): Promise<void> {
     let id = 4;
 
-    this.route.queryParams.subscribe((res) => {
-      id = JSON.parse(res['id']);
-    });
+    // this.route.queryParams.subscribe((res) => {
+    //   id = JSON.parse(res['id']);
+    // });
 
-    (await this.dashboardService.getUsers()).subscribe((res: any) => {
-      this.users = res;
-    });
+    // (await this.dashboardService.getUsers()).subscribe((res: any) => {
+    //   this.users = res;
+    // });
   }
 
   list() {}
