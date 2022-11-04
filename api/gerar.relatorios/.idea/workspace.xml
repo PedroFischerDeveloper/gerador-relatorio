@@ -5,10 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7e540b01-5e62-43c0-bebc-8725fb0f8aa0" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../../front/src/app/dashboard/dashboard.service.spec.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../front/src/app/dashboard/dashboard.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../front/src/app/dashboard/dashboard.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../front/src/app/services/api.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../front/src/app/services/api.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../front/src/environments/environment.prod.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../front/src/environments/environment.prod.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../front/src/environments/environment.prod.ts" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../../front/src/environments/environment.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../front/src/environments/environment.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
